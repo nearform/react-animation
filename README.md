@@ -6,7 +6,7 @@ This package provides components you can use to easily add animation to your com
 
 ## Demos
 
-You can see each of the helpers and animations that are included in action on [this demo page](https://nearform.github.com/ui-animation-helpers).
+You can see each of the helpers and animations that are included in action on [this demo page](https://nearform.github.com/ui-animation-helpers/).
 
 ## Usage
 
@@ -103,7 +103,7 @@ TODO: A way of passing in a custom animation rule for the in and out animations.
 
 As well as pre-built animations, this package includes a range of timing functions you can use in animations and transitions.
 
-The full set can be seen in action on the [demo page](https://nearform.github.io/ui-animation-helpers).
+The full set can be seen in action on the [demo page](https://nearform.github.io/ui-animation-helpers/).
 
 You can apply these to your component styles like so:
 
