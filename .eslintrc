@@ -1,0 +1,19 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true,
+    "serviceworker": true
+  },
+  "extends": ["standard", "standard-react", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "jest/no-focused-tests": "error",
+    "react-hooks/rules-of-hooks": "error"
+  },
+  "globals": {
+    "fixture": true
+  },
+  "plugins": ["jest", "react-hooks"]
+}

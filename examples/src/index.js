@@ -1,6 +1,7 @@
-import React from "react";
-import { render } from "react-dom";
-import { AnimateOnChange, HideUntilLoaded } from "../../src";
+import React from 'react'
+import { render } from 'react-dom'
+import { AnimateOnChange, HideUntilLoaded } from '../../src'
+
 const App = () => (
   <div>
     <p>
@@ -22,8 +23,9 @@ const App = () => (
       <code>Example code</code>
     </pre>
     <HideUntilLoaded imageToLoad="url">Show this when loaded</HideUntilLoaded>
-    <h3>IntersectionObserver</h3>
-    <p>Note: Use this to trigger all the animations when visible</p>
+    <p>
+      Note: Use IntersectionObserver to trigger all the animations when visible
+    </p>
     <pre>
       <code>Example code</code>
     </pre>
@@ -32,5 +34,6 @@ const App = () => (
     <h3>popIn</h3>
     <p>etc</p>
   </div>
-);
-render(<App />, document.getElementById("root"));
+)
+
+render(<App />, document.getElementById('root'))

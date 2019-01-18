@@ -1,5 +1,10 @@
 {
-  "presets": ["env", "react"],
+  "presets": [["env", { "modules": false }], "react"],
   "plugins": ["transform-object-rest-spread"],
-  "ignore": ["**.test.js", "setupTests.js"]
+  "ignore": ["**.test.js", "setupTests.js"],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
 }
