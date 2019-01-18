@@ -1,0 +1,66 @@
+{
+  "name": "@nearform/ui-animation-helpers",
+  "version": "1.0.0",
+  "description": "Helpful animation components for adding movement to your UI",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "webpack-dev-server --mode development",
+    "transpile": "babel src -d dist --copy-files --ignore **.test.js,setupTests.js",
+    "prepublishOnly": "npm run transpile",
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d examples/dist",
+    "publish-demo": "npm run build && npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nearform/ui-animation-helpers.git"
+  },
+  "keywords": [
+    "ui",
+    "animation",
+    "react"
+  ],
+  "author": "NearForm",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "react": "^16.8.0-alpha.0",
+    "react-dom": "^16.8.0-alpha.0"
+  },
+  "bugs": {
+    "url": "https://github.com/nearform/ui-animation-helpers/issues"
+  },
+  "homepage": "https://github.com/nearform/ui-animation-helpers#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^2.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "gh-pages": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1",
+    "react-test-renderer": "^16.7.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "regenerator-runtime": "^0.13.1"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    }
+  }
+}
