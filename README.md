@@ -98,3 +98,48 @@ The following animations are included:
 ### Using your own animations
 
 TODO: A way of passing in a custom animation rule for the in and out animations.
+
+## Easings
+
+As well as pre-built animations, this package includes a range of timing functions you can use in animations and transitions.
+
+The full set can be seen in action on the [demo page](https://nearform.github.io/ui-animation-helpers).
+
+You can apply these to your component styles like so:
+
+```
+import { easings } from 'ui-animation-helpers'
+
+const style = {
+  animation: `pop-in ${easings.easeOutExpo} 500ms forwards`
+}
+
+<MyComponent style={style} />
+
+``
+
+The full list includes:
+
+* linear
+* easeInSine
+* easeOutSine
+* easeInOutSine
+* easeInQuad
+* easeOutQuad
+* easeInOutQuad
+* easeInCubic
+* easeOutCubic
+* easeInOutCubic
+* easeInQuart
+* easeOutQuart
+* easeInOutQuart
+* easeInQuint
+* easeOutQuint
+* easeInOutQuint
+* easeInExpo
+* easeOutExpo
+* easeInOutExpo
+* easeInBack
+* easeOutBack
+* easeInOutBack
+```
