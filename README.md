@@ -66,7 +66,7 @@ You can specify any React component as a "spinner" or loading indicator. This wi
 ```
 import MySpinner from '../MySpinner' // This could be an animated SVG or any React component
 
-<HideUntilLoaded imageToLoad="[IMAGE_URL]" *Spinner={Spinner}*>Your content</HideUntilLoaded>
+<HideUntilLoaded imageToLoad="[IMAGE_URL]" Spinner={Spinner}>Your content</HideUntilLoaded>
 
 ```
 
@@ -97,7 +97,7 @@ The following animations are included:
 
 ### Using your own animations
 
-TODO: A way of passing in a custom animation rule for the in and out animations.
+Currently there is no option to pass in your own `animation` properties, but this is something I'm keen to add as soon as possible.
 
 ## Easings
 
@@ -116,30 +116,59 @@ const style = {
 
 <MyComponent style={style} />
 
-``
+```
 
 The full list includes:
 
-* linear
-* easeInSine
-* easeOutSine
-* easeInOutSine
-* easeInQuad
-* easeOutQuad
-* easeInOutQuad
-* easeInCubic
-* easeOutCubic
-* easeInOutCubic
-* easeInQuart
-* easeOutQuart
-* easeInOutQuart
-* easeInQuint
-* easeOutQuint
-* easeInOutQuint
-* easeInExpo
-* easeOutExpo
-* easeInOutExpo
-* easeInBack
-* easeOutBack
-* easeInOutBack
+- linear
+- easeInSine
+- easeOutSine
+- easeInOutSine
+- easeInQuad
+- easeOutQuad
+- easeInOutQuad
+- easeInCubic
+- easeOutCubic
+- easeInOutCubic
+- easeInQuart
+- easeOutQuart
+- easeInOutQuart
+- easeInQuint
+- easeOutQuint
+- easeInOutQuint
+- easeInExpo
+- easeOutExpo
+- easeInOutExpo
+- easeInBack
+- easeOutBack
+- easeInOutBack
+
+## Contributing
+
+Pull requests are welcome. Please ensure to add any tests when adding to or updating the components.
+
+To develop locally, clone the repo and run:
+
 ```
+npm install
+npm start
+```
+
+Testing can be carried out with `npm test`.
+
+## License
+
+Copyright 2018 nearForm
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
+
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and limitations under the License.
