@@ -1,0 +1,22 @@
+/* Global style rules */
+body {
+  background-image: linear-gradient(
+    to left bottom,
+    #d02018,
+    #d5003f,
+    #cd0064,
+    #b70087,
+    #901ca7,
+    #7a29aa,
+    #6232aa,
+    #4637a9,
+    #522f95,
+    #572982,
+    #582470,
+    #552060
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100vw;
+}
