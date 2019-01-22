@@ -4,7 +4,7 @@
   "description": "Helpful animation components for adding movement to your UI",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "start": "webpack-dev-server --mode development",
     "transpile": "babel src -d dist --copy-files --ignore **.test.js,setupTests.js",
     "prepublishOnly": "npm run transpile",
@@ -73,9 +73,6 @@
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    },
-    "transform": {
-      "^.+\\.js$": "<rootDir>/config/jestFileTransform.js"
     }
   }
 }

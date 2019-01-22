@@ -33,15 +33,29 @@ describe('HideUntilLoaded', () => {
     const component = mount(
       <HideUntilLoaded imageToLoad="url">123</HideUntilLoaded>
     )
+    expect(component.find('.content').get(0).props.style.opacity).toEqual(0)
     expect(component.find('.content').get(0).props.style.animation).toEqual(
       undefined
+    )
+  })
+
+  it('should show content when loaded', () => {
+    usePreloadImage.mockImplementation(() => [false, true])
+    const component = mount(
+      <HideUntilLoaded imageToLoad="url">123</HideUntilLoaded>
+    )
+    expect(component.find('.content').get(0).props.style.opacity).toEqual(1)
+    expect(component.find('.content').get(0).props.style.transition).toEqual(
+      expect.stringContaining('opacity 500ms ease-out')
     )
   })
 
   it('should apply animationIn when loaded', () => {
     usePreloadImage.mockImplementation(() => [false, true])
     const component = mount(
-      <HideUntilLoaded imageToLoad="url">123</HideUntilLoaded>
+      <HideUntilLoaded imageToLoad="url" animationIn="popIn">
+        123
+      </HideUntilLoaded>
     )
     expect(component.find('.content').get(0).props.style.animation).toEqual(
       expect.stringContaining('pop-in')
@@ -51,22 +65,13 @@ describe('HideUntilLoaded', () => {
   it('should apply animationIn when errored (as a fallback)', () => {
     usePreloadImage.mockImplementation(() => [true, false])
     const component = mount(
-      <HideUntilLoaded imageToLoad="url">123</HideUntilLoaded>
+      <HideUntilLoaded imageToLoad="url" animationIn="popIn">
+        123
+      </HideUntilLoaded>
     )
     expect(component.find('.content').get(0).props.style.animation).toEqual(
       expect.stringContaining('pop-in')
     )
-  })
-
-  it('should set named animation on in and out', () => {
-    usePreloadImage.mockImplementation(() => [false, true])
-    const component = mount(
-      <HideUntilLoaded animationIn="popIn">123</HideUntilLoaded>
-    )
-    expect(component.find('.content').get(0).props.style.animation).toEqual(
-      expect.stringContaining('pop-in')
-    )
-    expect(component.text()).toEqual('new')
   })
 
   it('should show a given spinner', () => {
@@ -79,6 +84,19 @@ describe('HideUntilLoaded', () => {
       </HideUntilLoaded>
     )
     expect(component.find('.example-spinner').length).toEqual(1)
+  })
+
+  it('should hide spinner when content loaded', () => {
+    usePreloadImage.mockImplementation(() => [false, true])
+    const component = mount(
+      <HideUntilLoaded
+        imageToLoad="url"
+        Spinner={() => <div className="example-spinner" />}
+      >
+        123
+      </HideUntilLoaded>
+    )
+    expect(component.find('.spinner').get(0).props.style.opacity).toEqual(0)
   })
 
   it('should accept custom styles', () => {

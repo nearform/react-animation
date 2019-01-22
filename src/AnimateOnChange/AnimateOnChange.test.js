@@ -13,14 +13,16 @@ describe('AnimateOnChange', () => {
   it('should render child components', () => {
     const component = mount(
       <AnimateOnChange>
-        <div>
-          <p />
-          <p />
+        <div className="test-1">
+          <p className="test-2" />
+          <p className="test-3" />
         </div>
       </AnimateOnChange>
     )
-    expect(component.find('div').length).toEqual(1)
+    expect(component.find('.test-1').length).toEqual(1)
     expect(component.find('p').length).toEqual(2)
+    expect(component.find('.test-2').length).toEqual(1)
+    expect(component.find('.test-3').length).toEqual(1)
   })
 
   it('should have a default duration of 200', () => {

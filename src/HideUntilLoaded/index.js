@@ -50,7 +50,9 @@ const HideUntilLoaded = ({
     position: 'absolute',
     left: '50%',
     top: '50%',
-    transition: `opacity 0.5s ease-out, transform 0.5s ${easings.easeInOutBack}`
+    transition: `opacity 500ms ease-out, transform 0.5s ${
+      easings.easeInOutBack
+    }`
   }
 
   if (!loaded && !errored) {
