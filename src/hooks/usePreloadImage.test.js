@@ -26,14 +26,4 @@ describe('usePreloadImage', () => {
     expect(component.find('.test-div').get(0).props.errored).toEqual('false')
     expect(component.find('.test-div').get(0).props.loaded).toEqual('true')
   })
-
-  // it('should call createElement on new image', () => {
-  //   const createElementSpy = jest.fn()
-  //   createElementSpy.mockResolvedValue({})
-  //   global.document = {
-  //     createElement: createElementSpy
-  //   }
-  //   mount(<TestComponent imageToLoad="url" />)
-  //   expect(createElementSpy).toHaveBeenCalledWith('img')
-  // })
 })

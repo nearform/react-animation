@@ -5,7 +5,5 @@ module.exports = {
     '.+\\.(css|png|jpg)$': 'identity-obj-proxy'
   },
   coverageReporters: ['json-summary', 'text', 'lcov'],
-  collectCoverage: true,
-  setupFiles: ['./__mocks__/client.js'],
-  testEnvironment: 'jsdom'
+  collectCoverage: true
 }
