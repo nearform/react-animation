@@ -1,6 +1,6 @@
 # UI Animation Helpers
 
-[WIP]
+[![Known Vulnerabilities](https://snyk.io/test/github/nearform/ui-animation-helpers/badge.svg)](https://snyk.io/test/github/nearform/ui-animation-helpers)
 
 This package provides components you can use to easily add animation to your components, along with a set of pre-built animations and timing functions.
 

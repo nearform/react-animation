@@ -3,7 +3,6 @@ import { useLayoutEffect, useState } from 'react'
 const usePreloadImage = imageToLoad => {
   const [loaded, setLoaded] = useState(true) // so that it renders on server
   const [errored, setErrored] = useState(false)
-
   useLayoutEffect(
     () => {
       if (typeof window === 'object' && imageToLoad) {

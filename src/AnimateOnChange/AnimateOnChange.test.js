@@ -42,10 +42,7 @@ describe('AnimateOnChange', () => {
   })
 
   it('should animate then change content when children changes', () => {
-    const durationOut = 10
-    const component = mount(
-      <AnimateOnChange durationOut={durationOut}>old</AnimateOnChange>
-    )
+    const component = mount(<AnimateOnChange>old</AnimateOnChange>)
     expect(component.find('span').get(0).props.style.opacity).toEqual(1)
     expect(component.text()).toEqual('old')
 
@@ -65,13 +62,8 @@ describe('AnimateOnChange', () => {
   })
 
   it('should set named animation on in and out', () => {
-    const durationOut = 10
     const component = mount(
-      <AnimateOnChange
-        animationIn="popIn"
-        animationOut="popOut"
-        durationOut={durationOut}
-      >
+      <AnimateOnChange animationIn="popIn" animationOut="popOut">
         old
       </AnimateOnChange>
     )
@@ -93,6 +85,14 @@ describe('AnimateOnChange', () => {
       expect.stringContaining('pop-in')
     )
     expect(component.text()).toEqual('new')
+  })
+
+  it('should clear timeout on unmount', () => {
+    const component = mount(<AnimateOnChange>123</AnimateOnChange>)
+    component.setProps({ children: 'new' })
+    component.update()
+    component.unmount()
+    expect(clearTimeout).toHaveBeenCalledTimes(1)
   })
 
   it('should accept custom styles', () => {

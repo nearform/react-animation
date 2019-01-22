@@ -4,7 +4,7 @@
   "description": "Helpful animation components for adding movement to your UI",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --watch --env=jsdom",
     "start": "webpack-dev-server --mode development",
     "transpile": "babel src -d dist --copy-files --ignore **.test.js,setupTests.js",
     "prepublishOnly": "npm run transpile",
@@ -58,6 +58,7 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
+    "jsdom": "^13.1.0",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
     "react-test-renderer": "^16.7.0",
@@ -68,11 +69,5 @@
   },
   "dependencies": {
     "regenerator-runtime": "^0.13.1"
-  },
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
-    "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    }
   }
 }

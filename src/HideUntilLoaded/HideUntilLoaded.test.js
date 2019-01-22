@@ -16,9 +16,23 @@ describe('HideUntilLoaded', () => {
     )
     expect(component.text()).toEqual('123')
   })
+
   it('should render child components', () => {
     const component = mount(
       <HideUntilLoaded imageToLoad="url">
+        <div className="test-div">
+          <p />
+          <p />
+        </div>
+      </HideUntilLoaded>
+    )
+    expect(component.find('.test-div').length).toEqual(1)
+    expect(component.find('p').length).toEqual(2)
+  })
+
+  it('should return children if no image specified', () => {
+    const component = mount(
+      <HideUntilLoaded>
         <div className="test-div">
           <p />
           <p />
