@@ -17,6 +17,24 @@ body {
   );
   background-attachment: fixed;
   background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.75;
   min-height: 100vh;
   width: 100vw;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 52px;
+}
+
+p {
+  font-size: 18px;
+  margin-block-start: 0em;
+}
+
+h2,
+h3,
+h4 {
+  margin-bottom: 0.5em;
 }

@@ -20,6 +20,19 @@
   }
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10em);
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+}
+
 @keyframes pop-in {
   0% {
     opacity: 0;
@@ -49,11 +62,19 @@
 }
 
 @keyframes slide-in {
-  0% { transform: translateY(100%); }
-  100% { transform: none; }
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: none;
+  }
 }
 
 @keyframes slide-out {
-  0% { transform: translateY(0%); }
-  100% { transform: translateY(-100%); }
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }

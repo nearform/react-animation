@@ -26,6 +26,7 @@ const HideUntilLoaded = ({
   if (!imageToLoad) return children
 
   const styles = {
+    display: 'inline-block',
     position: 'relative',
     ...style
   }
@@ -65,11 +66,11 @@ const HideUntilLoaded = ({
 
   return (
     <span style={styles}>
-      <div className="content" style={contentStyles}>
+      <div className="hide-until-loaded-content" style={contentStyles}>
         {children}
       </div>
       {Spinner && (
-        <div className="spinner" style={spinnerStyles}>
+        <div className="hide-until-loaded-spinner" style={spinnerStyles}>
           <Spinner />
         </div>
       )}

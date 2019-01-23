@@ -46,6 +46,7 @@ const AnimateOnChange = ({
   )
 
   const styles = {
+    display: 'inline-block',
     transition: `opacity ${durationOut}ms ease-out`,
     opacity: animation === 'out' ? 0 : 1,
     ...style
