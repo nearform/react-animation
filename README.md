@@ -65,7 +65,7 @@ import MySpinner from '../MySpinner' // This could be an animated SVG or any Rea
 This package includes some pre-built animations along with their associated keyframes. As well as supplying the animation names to the above components, you can also apply these animations directly to your components:
 
 ```
-import { animations } from 'ui-animation-helpers'
+import { animations } from '@nearform/ui-animation-helpers'
 
 const style = {
   animation: animations.popIn
@@ -102,7 +102,7 @@ The full set can be seen in action on the [demo page](https://nearform.github.io
 You can apply these to your component styles like so:
 
 ```
-import { easings } from 'ui-animation-helpers'
+import { easings } from '@nearform/ui-animation-helpers'
 
 const style = {
   animation: `pop-in ${easings.easeOutExpo} 500ms forwards`

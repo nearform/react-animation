@@ -134,7 +134,8 @@ const DemoPage = ({ className }) => {
           <h2>AnimateOnChange Component</h2>
           <p>
             <code>
-              import {`{ AnimateOnChange }`} from 'ui-animation-helpers'
+              import {`{ AnimateOnChange }`} from
+              '@nearform/ui-animation-helpers'
             </code>
           </p>
           <p>
@@ -228,7 +229,8 @@ const DemoPage = ({ className }) => {
           <h2>HideUntilLoaded Component</h2>
           <p>
             <code>
-              import {`{ HideUntilLoaded }`} from 'ui-animation-helpers'
+              import {`{ HideUntilLoaded }`} from
+              '@nearform/ui-animation-helpers'
             </code>
           </p>
           <p>
@@ -318,7 +320,9 @@ const DemoPage = ({ className }) => {
         <div className="page-content">
           <h2>Animations</h2>
           <p>
-            <code>import {`{ animations }`} from 'ui-animation-helpers'</code>
+            <code>
+              import {`{ animations }`} from '@nearform/ui-animation-helpers'
+            </code>
           </p>
           <p>
             You will find a set of animations included with this repo. They come
@@ -352,7 +356,9 @@ const DemoPage = ({ className }) => {
         <div className="page-content">
           <h2>Easings (timing functions)</h2>
           <p>
-            <code>import {`{ easings }`} from 'ui-animation-helpers'</code>
+            <code>
+              import {`{ easings }`} from '@nearform/ui-animation-helpers'
+            </code>
           </p>
           <p>
             Similar to animations, you can use the built-in easings values in
