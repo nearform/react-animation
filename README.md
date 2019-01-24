@@ -1,7 +1,5 @@
 # UI Animation Helpers
 
-[![Known Vulnerabilities](https://snyk.io/test/github/nearform/ui-animation-helpers/badge.svg)](https://snyk.io/test/github/nearform/ui-animation-helpers)
-
 This package provides components you can use to easily add animation to your components, along with a set of pre-built animations and timing functions.
 
 ## Demos
@@ -35,14 +33,6 @@ The following (optional) properties can be used:
 
 By default, the animation used is a fade out and in. You can specify an animation for both the `out` (when the old content is removed) and `in` (when new content is shown) stages of the animation.
 
-The package includes the following pre-canned animations:
-
-- fadeIn
-- fadeOut
-- popIn
-- popOut
-- bounceIn
-
 You can reference these by name, for example:
 
     <AnimateOnChange animationIn="popIn" animationOut="popOut">...</AnimateOnChange>
@@ -57,7 +47,7 @@ Nobody likes a half-downloaded image appearing when rendering our UI. This compo
 
 By default the component will apply an `opacity` of 0 and then a `transition` when loading has completed. This will fade in the fully downloaded content.
 
-TODO: Add in a custom `animationIn` property
+You can supply `animationIn` an animation name to use that instead of the default fade.
 
 #### Spinners
 
@@ -91,13 +81,17 @@ The following animations are included:
 
 - fadeIn
 - fadeOut
+- fadeInUp
 - popIn
 - popOut
 - bounceIn
+- bounceOut
+- slideIn
+- slideOut
 
 ### Using your own animations
 
-Currently there is no option to pass in your own `animation` properties, but this is something I'm keen to add as soon as possible.
+Currently there is no option to pass in your own `animation` properties, but this is something I'm keen to add.
 
 ## Easings
 
