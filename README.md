@@ -9,7 +9,7 @@ You can see each of the helpers and animations that are included in action on [t
 ## Usage
 
 ```
-npm install ui-animation-helpers
+npm install @nearform/ui-animation-helpers
 ```
 
 ## Components

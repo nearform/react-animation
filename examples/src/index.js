@@ -127,7 +127,7 @@ const DemoPage = ({ className }) => {
         <div className="page-content">
           <h2>Installation</h2>
           <p>
-            <code>npm install ui-animation-helpers</code>
+            <code>npm install @nearform/ui-animation-helpers</code>
           </p>
         </div>
         <div className="page-content">
