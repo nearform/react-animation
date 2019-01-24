@@ -33,6 +33,11 @@ p {
   margin-block-start: 0em;
 }
 
+h2 {
+  font-size: 32px;
+  margin-top: 0;
+}
+
 h2,
 h3,
 h4 {

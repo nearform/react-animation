@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
+import ShadowCircle from './components/ShadowCircle'
 import {
   AnimateOnChange,
   HideUntilLoaded,
@@ -26,6 +27,10 @@ const words = [
   'Wow'
 ]
 
+const animationNames = Object.keys(animations)
+
+const easingNames = Object.keys(easings)
+
 const emojis = ['👌', '🎉', '😋', '🤩', '😻', '✨', '😍', '👍', '💥']
 
 const getRandomFrom = array => array[Math.floor(Math.random() * array.length)]
@@ -40,24 +45,53 @@ const HideUntilLoadedWrapper = props => {
   )
 
   return (
-    <HideUntilLoaded {...props} imageToLoad={randomPictureURL}>
-      <div>
-        <div
-          className="example-hul-image"
-          style={{
-            backgroundImage: `url(${randomPictureURL})`
-          }}
-        />
-        <p
-          className="example-hul-load"
-          onClick={() => setRandomPictureURL(generateRandomPictureURL())}
-        >
-          Try again
-        </p>
-      </div>
-    </HideUntilLoaded>
+    <div>
+      <HideUntilLoaded {...props} imageToLoad={randomPictureURL}>
+        <div>
+          <div
+            className="example-hul-image"
+            style={{
+              backgroundImage: `url(${randomPictureURL})`
+            }}
+          />
+        </div>
+      </HideUntilLoaded>
+      <p
+        className="example-hul-load"
+        onClick={() => setRandomPictureURL(generateRandomPictureURL())}
+      >
+        Try again
+      </p>
+    </div>
   )
 }
+
+const AnimatedBox = ({ animationName, className }) => (
+  <div className={`example-animation ${className}`}>
+    <div className="example-animation-box" />
+    <p>{animationName}</p>
+  </div>
+)
+
+AnimatedBox.propTypes = {
+  animationName: PropTypes.string,
+  className: PropTypes.string
+}
+
+const StyledAnimatedBox = styled(AnimatedBox)`
+  &:hover {
+    .example-animation-box {
+      animation: ${props => animations[props.animationName]};
+      animation-delay: 200ms;
+    }
+  }
+
+  .example-animation-box {
+    animationDuration: '1000ms';
+
+  }
+}
+`
 
 const DemoPage = ({ className }) => {
   const [randomWord, setRandomWord] = useState(getRandomFrom(words))
@@ -88,23 +122,32 @@ const DemoPage = ({ className }) => {
           or even just if you need a consistent set of animation timing
           functions.
         </p>
+      </div>
+      <div className="page-content">
         <h2>Installation</h2>
         <p>
           <code>npm install ui-animation-helpers</code>
         </p>
-        <h3>AnimateOnChange Component</h3>
+      </div>
+      <div className="page-content">
+        <h2>AnimateOnChange Component</h2>
+        <p>
+          <code>
+            import {`{ AnimateOnChange }`} from 'ui-animation-helpers'
+          </code>
+        </p>
         <p>
           The <code>AnimateOnChange</code> component waits for a change to any
           children and then creates a smooth transition between the old and new
           children states.
         </p>
-        <h4>Default animation (fade)</h4>
+        <h3>Default animation (fade)</h3>
         <p>
           It will fade out old content and fade in the new content when the
           content changes. This could be a number or string or any child
           components.
         </p>
-        <LazyLoad className="example-container" height={200}>
+        <LazyLoad height={200}>
           <div className="example">
             <pre>
               <code>{`<AnimateOnChange>
@@ -116,13 +159,13 @@ const DemoPage = ({ className }) => {
             </div>
           </div>
         </LazyLoad>
-        <h4>durationOut</h4>
+        <h3>durationOut</h3>
         <p>
           You can control how long the animation takes using the{' '}
           <code>durationOut</code> property. By default it is <code>200</code>{' '}
           (milliseconds).
         </p>
-        <LazyLoad className="example-container" height={200}>
+        <LazyLoad height={200}>
           <div className="example">
             <pre>
               <code>{`
@@ -138,19 +181,20 @@ const DemoPage = ({ className }) => {
           </div>
         </LazyLoad>
 
-        <h4>animationIn / animationOut</h4>
+        <h3>animationIn / animationOut</h3>
         <p>
           By passing in <code>animationIn</code> and <code>animationOut</code>{' '}
           we can change the fade animation to any others defined in the{' '}
           <code>animations</code> object.
         </p>
-        <LazyLoad className="example-container" height={200}>
+        <LazyLoad height={200}>
           <div className="example">
             <pre>
               <code>{`So very…
 <AnimateOnChange
   animationIn="bounceIn"
-  animationOut="popOut"
+  animationOut="bounceOut"
+  durationOut={500}
 >
   ${randomWord}
 </AnimateOnChange>`}</code>
@@ -159,7 +203,11 @@ const DemoPage = ({ className }) => {
               <div>
                 So very&hellip;{' '}
                 <span className="example-aoc-animations-text">
-                  <AnimateOnChange animationIn="bounceIn" animationOut="popOut">
+                  <AnimateOnChange
+                    animationIn="bounceIn"
+                    animationOut="bounceOut"
+                    durationOut={500}
+                  >
                     {randomWord}
                   </AnimateOnChange>
                 </span>
@@ -172,14 +220,21 @@ const DemoPage = ({ className }) => {
           overwrite that by passing an optional <code>style</code> object.
         </p>
         <p>Find all the available animations listed under Animations.</p>
-        <h3>HideUntilLoaded Component</h3>
+      </div>
+      <div className="page-content">
+        <h2>HideUntilLoaded Component</h2>
+        <p>
+          <code>
+            import {`{ HideUntilLoaded }`} from 'ui-animation-helpers'
+          </code>
+        </p>
         <p>
           Nobody likes a half-downloaded image appearing when rendering our UI.
           This component helps by hiding any children content until a specified
           image has finished downloading.
         </p>
 
-        <LazyLoad className="example-container" height={200}>
+        <LazyLoad height={200}>
           <div className="example">
             <pre>
               <code>{`<HideUntilLoaded
@@ -200,17 +255,17 @@ const DemoPage = ({ className }) => {
           url <code>imageToLoad</code> has finished loading.
         </p>
 
-        <h4>Spinner</h4>
+        <h3>Spinner</h3>
         <p>
           You can pass in your own component to act as a loading state - it will
           be shown until the image has loaded.
         </p>
-        <LazyLoad className="example-container" height={200}>
+        <LazyLoad height={200}>
           <div className="example">
             <pre>
               <code>{`<HideUntilLoaded
   imageToLoad="https://picsum.photos/2200/1200/"
-  Spinner={() => <div>Loading...</div>
+  Spinner={() => <div>Loading...</div>}
 >
   ... your content ...
 </HideUntilLoaded>`}</code>
@@ -226,23 +281,50 @@ const DemoPage = ({ className }) => {
           By default this will fade-in the content once the image referenced by
           url <code>imageToLoad</code> has finished loading.
         </p>
-
+      </div>
+      <div className="page-content">
         <h2>Animations</h2>
-        <p>You will find a set of animation</p>
-        <p>Example animations include:</p>
-        <ul>
-          <li>fadeIn</li>
-          <li>fadeOut</li>
-          <li>fadeInUp</li>
-          <li>popIn</li>
-          <li>popOut</li>
-          <li>bounceIn</li>
-          <li>bounceOut</li>
-          <li>slideIn</li>
-          <li>slideOut</li>
-        </ul>
-        <h3>popIn</h3>
-        <p>etc</p>
+        <p>
+          <code>import {`{ animations }`} from 'ui-animation-helpers'</code>
+        </p>
+        <p>
+          You will find a set of animations included with this repo. They come
+          with their own keyframes which are added by the helper components. If
+          you wish to use the animations in your styling, be sure to import the
+          keyframes also using{' '}
+          <code>import 'ui-animation-helpers/theme/keyframes.css'</code>.
+        </p>
+        <p>
+          You can use these in your styling in animation properties such as{' '}
+          <code>{`style={{animation: animations.popIn}}`}</code>
+        </p>
+        <p>Hover over each example to see it in action.</p>
+        <div className="example-animation-container">
+          {animationNames.map(animationName => (
+            <StyledAnimatedBox
+              animationName={animationName}
+              key={animationName}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="page-content">
+        <h2>Easings (timing functions)</h2>
+        <p>
+          <code>import {`{ easings }`} from 'ui-animation-helpers'</code>
+        </p>
+        {easingNames.map(easingName => (
+          <div className="example-easing" key={easingName}>
+            {easingName}
+            <LazyLoad
+              height={200}
+              unmountIfInvisible
+              placeholder={<div style={{ height: '74px' }} />}
+            >
+              <ShadowCircle easingName={easingName} duration={5000} />
+            </LazyLoad>
+          </div>
+        ))}
       </div>
     </section>
   )
@@ -256,7 +338,9 @@ const StyledDemoPage = styled(DemoPage)`
   animation: ${animations.fadeInUp};
   animation-duration: 1000ms;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   h1 {
     color: rgba(255, 255, 255, 0.9);
@@ -268,10 +352,14 @@ const StyledDemoPage = styled(DemoPage)`
     background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     box-shadow: 10px 10px 160px rgba(0, 0, 0, 0.4);
-    margin: 120px 40px 40px;
+    margin: 20px;
     max-width: 800px;
     padding: 20px;
     width: 100%;
+
+    &:first-child {
+      margin-top: 120px;
+    }
   }
 
   p > code {
@@ -362,6 +450,32 @@ const StyledDemoPage = styled(DemoPage)`
         margin: 14px 0;
         width: 100px;
         color: #fff;
+      }
+    }
+
+    &-animation {
+      align-items: center;
+      cursor: help;
+      display: flex;
+      flex-direction: column;
+
+      &-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      p {
+        font-size: 14px;
+        margin-top: 0.25em;
+      }
+
+      &-box {
+        border-radius: 6px;
+        height: 100px;
+        margin: 10px 16px;
+        width: 100px;
+        border: 4px solid #522f95;
+        background: #7a29aa;
       }
     }
   }
