@@ -1,5 +1,10 @@
 src
 examples
 .babelrc
+.eslintrc
+.eslintignore
+.prettierignore
+.prettierrc
+jest.config.js
 .gitignore
 webpack.config.js
