@@ -466,7 +466,13 @@ const StyledDemoPage = styled(DemoPage)`
     font-size: 22px;
     display: inline-block;
     margin: 20px 0 40px;
-    padding: 2px 6px;
+    padding: 2px 10px;
+
+    a {
+      color: rgb(29, 91, 225);
+      font-weight: bold;
+      text-decoration: none;
+    }
   }
 
   .example {
