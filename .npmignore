@@ -8,3 +8,4 @@ examples
 jest.config.js
 .gitignore
 webpack.config.js
+coverage
