@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 // import ShadowCircle from './components/ShadowCircle'
+import GithubIcon from './components/GithubIcon'
 import {
   AnimateOnChange,
   HideUntilLoaded,
@@ -107,90 +108,93 @@ const DemoPage = ({ className }) => {
     }
   })
   return (
-    <section className={className}>
-      <div className="page-content">
-        <h1>
-          UI Animation Helpers{' '}
-          <AnimateOnChange animationOut="bounceOut" animationIn="bounceIn">
-            {randomEmoji}
-          </AnimateOnChange>
-        </h1>
-        <p>
-          A helpful package containing components and animation styles for when
-          you want to add animation to an element, animate when something
-          changes, hold off displaying a component until it's image has loaded,
-          or even just if you need a consistent set of animation timing
-          functions.
-        </p>
-      </div>
-      <div className="page-content">
-        <h2>Installation</h2>
-        <p>
-          <code>npm install ui-animation-helpers</code>
-        </p>
-      </div>
-      <div className="page-content">
-        <h2>AnimateOnChange Component</h2>
-        <p>
-          <code>
-            import {`{ AnimateOnChange }`} from 'ui-animation-helpers'
-          </code>
-        </p>
-        <p>
-          The <code>AnimateOnChange</code> component waits for a change to any
-          children and then creates a smooth transition between the old and new
-          children states.
-        </p>
-        <h3>Default animation (fade)</h3>
-        <p>
-          It will fade out old content and fade in the new content when the
-          content changes. This could be a number or string or any child
-          components.
-        </p>
-        <LazyLoad height={200}>
-          <div className="example">
-            <pre>
-              <code>{`<AnimateOnChange>
+    <div>
+      <section className={className}>
+        <div className="page-content">
+          <h1>
+            UI Animation Helpers{' '}
+            <AnimateOnChange animationOut="bounceOut" animationIn="bounceIn">
+              {randomEmoji}
+            </AnimateOnChange>
+          </h1>
+          <p>
+            A helpful package containing components and animation styles for
+            when you want to add animation to an element, animate when something
+            changes, hold off displaying a component until it's image has
+            loaded, or even just if you need a consistent set of animation
+            timing functions.
+          </p>
+        </div>
+        <div className="page-content">
+          <h2>Installation</h2>
+          <p>
+            <code>npm install ui-animation-helpers</code>
+          </p>
+        </div>
+        <div className="page-content">
+          <h2>AnimateOnChange Component</h2>
+          <p>
+            <code>
+              import {`{ AnimateOnChange }`} from 'ui-animation-helpers'
+            </code>
+          </p>
+          <p>
+            The <code>AnimateOnChange</code> component waits for a change to any
+            children and then creates a smooth transition between the old and
+            new children states.
+          </p>
+          <h3>Default animation (fade)</h3>
+          <p>
+            It will fade out old content and fade in the new content when the
+            content changes. This could be a number or string or any child
+            components.
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`<AnimateOnChange>
   ${randomWord}
 </AnimateOnChange>`}</code>
-            </pre>
-            <div className="example-aoc-default">
-              <AnimateOnChange>{randomWord}</AnimateOnChange>
+              </pre>
+              <div className="example-aoc-default">
+                <AnimateOnChange>{randomWord}</AnimateOnChange>
+              </div>
             </div>
-          </div>
-        </LazyLoad>
-        <h3>durationOut</h3>
-        <p>
-          You can control how long the animation takes using the{' '}
-          <code>durationOut</code> property. By default it is <code>200</code>{' '}
-          (milliseconds).
-        </p>
-        <LazyLoad height={200}>
-          <div className="example">
-            <pre>
-              <code>{`
+          </LazyLoad>
+          <h3>durationOut</h3>
+          <p>
+            You can control how long the animation takes using the{' '}
+            <code>durationOut</code> property. By default it is <code>200</code>{' '}
+            (milliseconds).
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`
 <AnimateOnChange
   durationOut="1000"
 >
   ${randomWord}
 </AnimateOnChange>`}</code>
-            </pre>
-            <div className="example-aoc-slow">
-              <AnimateOnChange durationOut={1000}>{randomWord}</AnimateOnChange>
+              </pre>
+              <div className="example-aoc-slow">
+                <AnimateOnChange durationOut={1000}>
+                  {randomWord}
+                </AnimateOnChange>
+              </div>
             </div>
-          </div>
-        </LazyLoad>
+          </LazyLoad>
 
-        <h3>animationIn / animationOut</h3>
-        <p>
-          By passing in <code>animationIn</code> and <code>animationOut</code>{' '}
-          we can change the fade animation to any others defined in the{' '}
-          <code>animations</code> object.
-        </p>
-        <LazyLoad height={200}>
-          <div className="example">
-            <pre>
-              <code>{`So very…
+          <h3>animationIn / animationOut</h3>
+          <p>
+            By passing in <code>animationIn</code> and <code>animationOut</code>{' '}
+            we can change the fade animation to any others defined in the{' '}
+            <code>animations</code> object.
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`So very…
 <AnimateOnChange
   animationIn="bounceIn"
   animationOut="bounceOut"
@@ -198,122 +202,169 @@ const DemoPage = ({ className }) => {
 >
   ${randomWord}
 </AnimateOnChange>`}</code>
-            </pre>
-            <div className="example-aoc-animations">
-              <div>
-                So very&hellip;{' '}
-                <span className="example-aoc-animations-text">
-                  <AnimateOnChange
-                    animationIn="bounceIn"
-                    animationOut="bounceOut"
-                    durationOut={500}
-                  >
-                    {randomWord}
-                  </AnimateOnChange>
-                </span>
+              </pre>
+              <div className="example-aoc-animations">
+                <div>
+                  So very&hellip;{' '}
+                  <span className="example-aoc-animations-text">
+                    <AnimateOnChange
+                      animationIn="bounceIn"
+                      animationOut="bounceOut"
+                      durationOut={500}
+                    >
+                      {randomWord}
+                    </AnimateOnChange>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </LazyLoad>
-        <p>
-          Content is styled as <code>inline-block</code> by default but you can
-          overwrite that by passing an optional <code>style</code> object.
-        </p>
-        <p>Find all the available animations listed under Animations.</p>
-      </div>
-      <div className="page-content">
-        <h2>HideUntilLoaded Component</h2>
-        <p>
-          <code>
-            import {`{ HideUntilLoaded }`} from 'ui-animation-helpers'
-          </code>
-        </p>
-        <p>
-          Nobody likes a half-downloaded image appearing when rendering our UI.
-          This component helps by hiding any children content until a specified
-          image has finished downloading.
-        </p>
+          </LazyLoad>
+          <p>
+            Content is styled as <code>inline-block</code> by default but you
+            can overwrite that by passing an optional <code>style</code> object.
+          </p>
+          <p>Find all the available animations listed under Animations.</p>
+        </div>
+        <div className="page-content">
+          <h2>HideUntilLoaded Component</h2>
+          <p>
+            <code>
+              import {`{ HideUntilLoaded }`} from 'ui-animation-helpers'
+            </code>
+          </p>
+          <p>
+            Nobody likes a half-downloaded image appearing when rendering our
+            UI. This component helps by hiding any children content until a
+            specified image has finished downloading.
+          </p>
 
-        <LazyLoad height={200}>
-          <div className="example">
-            <pre>
-              <code>{`<HideUntilLoaded
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`<HideUntilLoaded
   imageToLoad="https://picsum.photos/2200/1200/"
 >
   ... your content ...
 </HideUntilLoaded>`}</code>
-            </pre>
-            <div className="example-hul-default">
-              <div>
-                <HideUntilLoadedWrapper />
+              </pre>
+              <div className="example-hul-default">
+                <div>
+                  <HideUntilLoadedWrapper />
+                </div>
               </div>
             </div>
-          </div>
-        </LazyLoad>
-        <p>
-          By default this will fade-in the content once the image referenced by
-          url <code>imageToLoad</code> has finished loading.
-        </p>
+          </LazyLoad>
+          <p>
+            By default this will fade-in the content once the image referenced
+            by url <code>imageToLoad</code> has finished loading.
+          </p>
 
-        <h3>Spinner</h3>
-        <p>
-          You can pass in your own component to act as a loading state - it will
-          be shown until the image has loaded.
-        </p>
-        <LazyLoad height={200}>
-          <div className="example">
-            <pre>
-              <code>{`<HideUntilLoaded
+          <h3>Spinner</h3>
+          <p>
+            You can pass in your own component to act as a loading state - it
+            will be shown until the image has loaded.
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`<HideUntilLoaded
   imageToLoad="https://picsum.photos/2200/1200/"
   Spinner={() => <div>Loading...</div>}
 >
   ... your content ...
 </HideUntilLoaded>`}</code>
-            </pre>
-            <div className="example-hul-spinner">
-              <div>
-                <HideUntilLoadedWrapper Spinner={() => <div>Loading...</div>} />
+              </pre>
+              <div className="example-hul-spinner">
+                <div>
+                  <HideUntilLoadedWrapper
+                    Spinner={() => <div>Loading...</div>}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </LazyLoad>
-        <p>
-          By default this will fade-in the content once the image referenced by
-          url <code>imageToLoad</code> has finished loading.
-        </p>
-      </div>
-      <div className="page-content">
-        <h2>Animations</h2>
-        <p>
-          <code>import {`{ animations }`} from 'ui-animation-helpers'</code>
-        </p>
-        <p>
-          You will find a set of animations included with this repo. They come
-          with their own keyframes which are added by the helper components. If
-          you wish to use the animations in your styling, be sure to import the
-          keyframes also using{' '}
-          <code>import 'ui-animation-helpers/theme/keyframes.css'</code>.
-        </p>
-        <p>
-          You can use these in your styling in animation properties such as{' '}
-          <code>{`style={{animation: animations.popIn}}`}</code>
-        </p>
-        <p>Hover over each example to see it in action.</p>
-        <div className="example-animation-container">
-          {animationNames.map(animationName => (
-            <StyledAnimatedBox
-              animationName={animationName}
-              key={animationName}
-            />
-          ))}
+          </LazyLoad>
+          <p>
+            By default this will fade-in the content once the image referenced
+            by url <code>imageToLoad</code> has finished loading.
+          </p>
+
+          <h3>animationIn</h3>
+          <p>
+            Give the <code>HideUntilLoaded</code> component a named animation
+            and it'll apply that.
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`<HideUntilLoaded
+  animationIn="bounceIn"
+  imageToLoad="https://picsum.photos/2200/1200/"
+  Spinner={() => <div>Loading...</div>}
+>
+  ... your content ...
+</HideUntilLoaded>`}</code>
+              </pre>
+              <div className="example-hul-spinner">
+                <div>
+                  <HideUntilLoadedWrapper
+                    animationIn="bounceIn"
+                    Spinner={() => <div>Loading...</div>}
+                  />
+                </div>
+              </div>
+            </div>
+          </LazyLoad>
+          <p>The available animation names are defined next...</p>
         </div>
+        <div className="page-content">
+          <h2>Animations</h2>
+          <p>
+            <code>import {`{ animations }`} from 'ui-animation-helpers'</code>
+          </p>
+          <p>
+            You will find a set of animations included with this repo. They come
+            with their own keyframes which are added by the helper components.
+            If you wish to use the animations in your styling, be sure to import
+            the keyframes also using{' '}
+            <code>import 'ui-animation-helpers/theme/keyframes.css'</code>.
+          </p>
+          <p>
+            Animations can be applied to your styling in animation properties
+            such as <code>{`style={{animation: animations.popIn}}`}</code>
+          </p>
+          <p>
+            You could use them on components, or even use them on pages to have
+            each page fade-in, for example.
+          </p>
+          <p>Hover over each example to see it in action.</p>
+          <div className="example-animation-container">
+            {animationNames.map(animationName => (
+              <StyledAnimatedBox
+                animationName={animationName}
+                key={animationName}
+              />
+            ))}
+          </div>
+        </div>
+        <p className="copyright">
+          Made with{' '}
+          <AnimateOnChange animationOut="bounceOut" animationIn="bounceIn">
+            {randomEmoji}
+          </AnimateOnChange>{' '}
+          by <a href="https://nearform.com">NearForm</a>
+        </p>
+      </section>
+      <div className="github-icon">
+        <a href="https://github.com/nearform/ui-animation-helpers">
+          <GithubIcon />
+        </a>
       </div>
-    </section>
+    </div>
   )
 }
 
 /*
-Removing the easings bit for now 
+Removing the easings bit for now
 
 <div className="page-content">
   <h2>Easings (timing functions)</h2>
@@ -374,6 +425,15 @@ const StyledDemoPage = styled(DemoPage)`
     font-size: 14px;
     display: inline-block;
     margin: 0 2px;
+    padding: 2px 6px;
+  }
+
+  .copyright {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    font-size: 22px;
+    display: inline-block;
+    margin: 20px 0 40px;
     padding: 2px 6px;
   }
 
