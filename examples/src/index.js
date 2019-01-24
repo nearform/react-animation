@@ -410,7 +410,7 @@ const StyledDemoPage = styled(DemoPage)`
 
     @media ${() => breakpoints.desktop} {
       font-size: 64px;
-      margin-top: -69px;
+      margin-top: -68px;
     }
   }
 
@@ -441,12 +441,13 @@ const StyledDemoPage = styled(DemoPage)`
   }
 
   h2 {
-    margin-top: 0;
+    margin-top: 0.5em;
     line-height: 24px;
     margin-bottom: 1em;
 
     @media ${() => breakpoints.desktop} {
       font-size: 32px;
+      margin-bottom: 0.75em;
     }
   }
 
