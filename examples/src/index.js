@@ -339,7 +339,7 @@ const DemoPage = ({ className }) => {
             You could use them on components, or even use them on pages to have
             each page fade-in, for example.
           </p>
-          <p>Hover over each example to see it in action.</p>
+          <p>Hover or tap each example to see it in action.</p>
           <div className="example-animation-container">
             {animationNames.map(animationName => (
               <StyledAnimatedBox
@@ -386,18 +386,32 @@ DemoPage.propTypes = {
   className: PropTypes.string
 }
 
+const breakpoints = {
+  desktop: '(min-width: 768px)'
+}
+
 const StyledDemoPage = styled(DemoPage)`
-  animation: ${animations.fadeInUp};
+  align-items: center;
   animation-duration: 1000ms;
+  animation: ${animations.fadeInUp};
   display: flex;
+  padding: 0 20px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+
+  @media ${() => breakpoints.desktop} {
+    padding: 0;
+  }
 
   h1 {
     color: rgba(255, 255, 255, 0.9);
-    font-size: 64px;
-    margin-top: -69px;
+    font-size: 24px;
+    margin-top: -54px;
+
+    @media ${() => breakpoints.desktop} {
+      font-size: 64px;
+      margin-top: -69px;
+    }
   }
 
   .page-content {
@@ -405,12 +419,34 @@ const StyledDemoPage = styled(DemoPage)`
     border-radius: 12px;
     box-shadow: 10px 10px 160px rgba(0, 0, 0, 0.4);
     margin: 20px;
-    max-width: 800px;
     padding: 20px;
-    width: 100%;
+    width: calc(100% - 40px);
+
+    @media ${() => breakpoints.desktop} {
+      max-width: 800px;
+      width: 100%;
+    }
 
     &:first-child {
       margin-top: 120px;
+    }
+  }
+
+  p {
+    font-size: 16px;
+
+    @media ${() => breakpoints.desktop} {
+      font-size: 18px;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+    line-height: 24px;
+    margin-bottom: 1em;
+
+    @media ${() => breakpoints.desktop} {
+      font-size: 32px;
     }
   }
 
@@ -433,17 +469,23 @@ const StyledDemoPage = styled(DemoPage)`
   }
 
   .example {
-    animation: ${animations.bounceIn};
-    animation-duration: 600ms;
+    align-items: center;
     animation-delay: 500ms;
-    opacity: 0;
+    animation-duration: 600ms;
+    animation: ${animations.bounceIn};
     background: #fff;
     border-radius: 12px;
     box-shadow: 10px 10px 60px rgba(0, 0, 0, 0.1);
     display: flex;
+    flex-wrap: wrap;
+    opacity: 0;
     padding: 10px 20px;
-    margin: 0 -40px 30px;
-    align-items: center;
+    margin-bottom: 1em;
+
+    @media ${() => breakpoints.desktop} {
+      flex-wrap: nowrap;
+      margin: 0 -40px 30px;
+    }
 
     > pre {
       align-items: center;
@@ -454,13 +496,21 @@ const StyledDemoPage = styled(DemoPage)`
       overflow: scroll;
       min-height: 150px;
       padding: 10px 20px;
-      width: 50%;
+      width: 100%;
+
+      @media ${() => breakpoints.desktop} {
+        width: 50%;
+      }
     }
 
     > div {
       display: flex;
       justify-content: center;
-      width: 50%;
+      width: 100%;
+
+      @media ${() => breakpoints.desktop} {
+        width: 50%;
+      }
     }
 
     &-aoc {
