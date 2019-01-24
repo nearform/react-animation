@@ -3,13 +3,12 @@ import { render } from 'react-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
-// import ShadowCircle from './components/ShadowCircle'
 import GithubIcon from './components/GithubIcon'
 import {
   AnimateOnChange,
   HideUntilLoaded,
-  animations
-  // easings
+  animations,
+  easings
 } from '../../src'
 import './styles/normalize.css'
 import './styles/global.css'
@@ -30,7 +29,7 @@ const words = [
 
 const animationNames = Object.keys(animations)
 
-// const easingNames = Object.keys(easings)
+const easingNames = Object.keys(easings)
 
 const emojis = ['👌', '🎉', '😋', '🤩', '😻', '✨', '😍', '👍', '💥']
 
@@ -333,6 +332,10 @@ const DemoPage = ({ className }) => {
             such as <code>{`style={{animation: animations.popIn}}`}</code>
           </p>
           <p>
+            If the animation isn't right you can override specific animation
+            properties such as duration or timing function as needed.
+          </p>
+          <p>
             You could use them on components, or even use them on pages to have
             each page fade-in, for example.
           </p>
@@ -345,6 +348,22 @@ const DemoPage = ({ className }) => {
               />
             ))}
           </div>
+        </div>
+        <div className="page-content">
+          <h2>Easings (timing functions)</h2>
+          <p>
+            <code>import {`{ easings }`} from 'ui-animation-helpers'</code>
+          </p>
+          <p>
+            Similar to animations, you can use the built-in easings values in
+            your projects. They are based on the timing functions set out on{' '}
+            <a href="https://easings.net">easings.net</a>.
+          </p>
+          <ul>
+            {easingNames.map(easingName => (
+              <li key={easingName}>{easingName}</li>
+            ))}
+          </ul>
         </div>
         <p className="copyright">
           Made with{' '}
@@ -362,30 +381,6 @@ const DemoPage = ({ className }) => {
     </div>
   )
 }
-
-/*
-Removing the easings bit for now
-
-<div className="page-content">
-  <h2>Easings (timing functions)</h2>
-  <p>
-    <code>import {`{ easings }`} from 'ui-animation-helpers'</code>
-  </p>
-  {easingNames.map(easingName => (
-    <div className="example-easing" key={easingName}>
-      {easingName}
-      <LazyLoad
-        height={200}
-        unmountIfInvisible
-        placeholder={<div style={{ height: '74px' }} />}
-      >
-        <ShadowCircle easingName={easingName} duration={5000} />
-      </LazyLoad>
-    </div>
-  ))}
-</div>
-
-*/
 
 DemoPage.propTypes = {
   className: PropTypes.string
