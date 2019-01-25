@@ -1,7 +1,7 @@
 {
-  "name": "@nearform/ui-animation-helpers",
+  "name": "@nearform/react-animation",
   "version": "1.0.0",
-  "description": "Helpful animation components for adding movement to your UI",
+  "description": "Helpful animation components for adding movement to your React components",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --watch",
@@ -17,15 +17,16 @@
     "url": "git+https://github.com/nearform/ui-animation-helpers.git"
   },
   "keywords": [
-    "ui",
+    "react",
     "animation",
-    "react"
+    "keyframes",
+    "timing-functions"
   ],
   "author": "NearForm",
   "license": "Apache-2.0",
   "peerDependencies": {
-    "react": "^16.8.0-alpha.0",
-    "react-dom": "^16.8.0-alpha.0"
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1"
   },
   "bugs": {
     "url": "https://github.com/nearform/ui-animation-helpers/issues"

@@ -111,31 +111,35 @@ const DemoPage = ({ className }) => {
       <section className={className}>
         <div className="page-content">
           <h1>
-            UI Animation Helpers{' '}
+            React Animation{' '}
             <AnimateOnChange animationOut="bounceOut" animationIn="bounceIn">
               {randomEmoji}
             </AnimateOnChange>
           </h1>
           <p>
-            A helpful package containing components and animation styles for
-            when you want to add animation to an element, animate when something
-            changes, hold off displaying a component until it's image has
-            loaded, or even just if you need a consistent set of animation
-            timing functions.
+            A React toolkit containing components and animation styles for when
+            adding animation. This includes animating when something changes,
+            hiding a component until it's image has loaded, along with some
+            reusable animations and timing functions.
           </p>
         </div>
         <div className="page-content">
           <h2>Installation</h2>
           <p>
-            <code>npm install @nearform/ui-animation-helpers</code>
+            <strong>IMPORTANT: </strong> This package uses{' '}
+            <a href="https://reactjs.org/docs/hooks-intro.html">hooks</a>. This
+            means that you will need to upgrade React and React DOM to{' '}
+            <code>^16.8.0-alpha.1</code> or <code>next</code>.
+          </p>
+          <p>
+            <code>npm install @nearform/react-animation</code>
           </p>
         </div>
         <div className="page-content">
-          <h2>AnimateOnChange Component</h2>
+          <h2>AnimateOnChange</h2>
           <p>
             <code>
-              import {`{ AnimateOnChange }`} from
-              '@nearform/ui-animation-helpers'
+              import {`{ AnimateOnChange }`} from '@nearform/react-animation'
             </code>
           </p>
           <p>
@@ -226,11 +230,10 @@ const DemoPage = ({ className }) => {
           <p>Find all the available animations listed under Animations.</p>
         </div>
         <div className="page-content">
-          <h2>HideUntilLoaded Component</h2>
+          <h2>HideUntilLoaded</h2>
           <p>
             <code>
-              import {`{ HideUntilLoaded }`} from
-              '@nearform/ui-animation-helpers'
+              import {`{ HideUntilLoaded }`} from '@nearform/react-animation'
             </code>
           </p>
           <p>
@@ -321,7 +324,7 @@ const DemoPage = ({ className }) => {
           <h2>Animations</h2>
           <p>
             <code>
-              import {`{ animations }`} from '@nearform/ui-animation-helpers'
+              import {`{ animations }`} from '@nearform/react-animation'
             </code>
           </p>
           <p>
@@ -329,7 +332,10 @@ const DemoPage = ({ className }) => {
             with their own keyframes which are added by the helper components.
             If you wish to use the animations in your styling, be sure to import
             the keyframes also using{' '}
-            <code>import 'ui-animation-helpers/theme/keyframes.css'</code>.
+            <code>
+              `import "@nearform/react-animation/dist/theme/keyframes.css"`
+            </code>
+            .
           </p>
           <p>
             Animations can be applied to your styling in animation properties
@@ -356,9 +362,7 @@ const DemoPage = ({ className }) => {
         <div className="page-content">
           <h2>Easings (timing functions)</h2>
           <p>
-            <code>
-              import {`{ easings }`} from '@nearform/ui-animation-helpers'
-            </code>
+            <code>import {`{ easings }`} from '@nearform/react-animation'</code>
           </p>
           <p>
             Similar to animations, you can use the built-in easings values in
@@ -380,7 +384,7 @@ const DemoPage = ({ className }) => {
         </p>
       </section>
       <div className="github-icon">
-        <a href="https://github.com/nearform/ui-animation-helpers">
+        <a href="https://github.com/nearform/react-animation">
           <GithubIcon />
         </a>
       </div>

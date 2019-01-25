@@ -1,15 +1,15 @@
-# UI Animation Helpers
+# React Animation 👌
 
 This package provides components you can use to easily add animation to your components, along with a set of pre-built animations and timing functions.
 
 ## Demos
 
-You can see each of the helpers and animations that are included in action on [this demo page](https://nearform.github.com/ui-animation-helpers/).
+You can see each of the components and animations that are included on [this demo page](https://nearform.github.com/react-animation/).
 
 ## Usage
 
 ```
-npm install @nearform/ui-animation-helpers
+npm install @nearform/react-animation
 ```
 
 ## Components
@@ -65,7 +65,7 @@ import MySpinner from '../MySpinner' // This could be an animated SVG or any Rea
 This package includes some pre-built animations along with their associated keyframes. As well as supplying the animation names to the above components, you can also apply these animations directly to your components:
 
 ```
-import { animations } from '@nearform/ui-animation-helpers'
+import { animations } from '@nearform/react-animation'
 
 const style = {
   animation: animations.popIn
@@ -97,12 +97,12 @@ Currently there is no option to pass in your own `animation` properties, but thi
 
 As well as pre-built animations, this package includes a range of timing functions you can use in animations and transitions.
 
-The full set can be seen in action on the [demo page](https://nearform.github.io/ui-animation-helpers/).
+The full set can be seen in action on the [demo page](https://nearform.github.io/react-animation/).
 
 You can apply these to your component styles like so:
 
 ```
-import { easings } from '@nearform/ui-animation-helpers'
+import { easings } from '@nearform/react-animation'
 
 const style = {
   animation: `pop-in ${easings.easeOutExpo} 500ms forwards`
