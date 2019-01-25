@@ -1,4 +1,37 @@
 /* Global style rules */
+@font-face {
+  font-family: 'Archia-Regular';
+  src: url('./fonts/Archia-Regular.eot');
+  src: url('./fonts/Archia-Regular.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Archia-Regular.ttf') format('truetype'),
+    url('./fonts/Archia-Regular.woff') format('woff'),
+    url('./fonts/Archia-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archia-SemiBold';
+  src: url('./fonts/Archia-SemiBold.eot');
+  src: url('./fonts/Archia-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Archia-SemiBold.ttf') format('truetype'),
+    url('./fonts/Archia-SemiBold.woff') format('woff'),
+    url('./fonts/Archia-SemiBold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Campton-Bold';
+  src: url('./fonts/Campton-Bold.eot');
+  src: url('./fonts/Campton-Bold.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Campton-Bold.ttf') format('truetype'),
+    url('./fonts/Campton-Bold.woff') format('woff'),
+    url('./fonts/Campton-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-image: linear-gradient(
     to left bottom,
@@ -17,24 +50,26 @@ body {
   );
   background-attachment: fixed;
   background-size: cover;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Archia-Regular', sans-serif;
   line-height: 1.75;
   min-height: 100vh;
   width: 100vw;
 }
 
 h1 {
+  font-family: 'Campton-Bold', sans-serif;
   font-size: 42px;
   line-height: 52px;
 }
 
 p {
-  font-size: 18px;
+  font-size: 16px;
   margin-block-start: 0em;
 }
 
 h2,
 h3,
 h4 {
+  font-family: 'Archia-SemiBold', sans-serif;
   margin-bottom: 0.5em;
 }

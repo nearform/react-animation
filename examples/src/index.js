@@ -415,12 +415,12 @@ const StyledDemoPage = styled(DemoPage)`
 
   h1 {
     color: rgba(255, 255, 255, 0.9);
-    font-size: 24px;
+    font-size: 34px;
     margin-top: -54px;
 
     @media ${() => breakpoints.desktop} {
       font-size: 64px;
-      margin-top: -68px;
+      margin-top: -60px;
     }
   }
 
@@ -443,10 +443,10 @@ const StyledDemoPage = styled(DemoPage)`
   }
 
   p {
-    font-size: 16px;
+    font-size: 14px;
 
     @media ${() => breakpoints.desktop} {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
