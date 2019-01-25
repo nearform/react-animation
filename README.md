@@ -89,9 +89,9 @@ The following animations are included:
 - slideIn
 - slideOut
 
-### Using your own animations
+### Using your own styles
 
-Currently there is no option to pass in your own `animation` properties, but this is something I'm keen to add.
+You can pass any custom styles into the `AnimateOnChange` and `HideUntilLoaded` using the `style` property.
 
 ## Easings
 
