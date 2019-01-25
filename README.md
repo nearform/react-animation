@@ -137,6 +137,24 @@ The full list includes:
 - easeOutBack
 - easeInOutBack
 
+## FAQ
+
+### What is this for?
+
+This package is for situations where UI needs to move or animate. These situations could include when data changes, or when an item takes a while to fully load a large background image.
+
+The package also contains pre-built animations that can be applied to components.
+
+### Why not use `ReactTransitionGroup` for many of the use cases?
+
+`ReactTransitionGroup` is a useful and powerful approach to adding animation to elements, and you could certainly do most of what this package does with it. However you would need to define animation keyframes manually, and style each stage of each animation using classes.
+
+This package aims to help when adding UI movement by making common actions easier. So for situations such as when data changes, or when an element needs to wait until loading has completed before animating into place, this package offers an easier way.
+
+One benefit of this is ensuring that the animations you add to UI elements "feel" the same across a site or app.
+
+`ReactTransitionGroup` provides a good approach to timing and managing classes but doesn't bring any animations or timing functions.
+
 ## License
 
 Copyright 2018 nearForm
