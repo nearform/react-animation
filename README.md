@@ -1,5 +1,7 @@
 # React Animation 👌
 
+[![Build Status](https://travis-ci.org/nearform/react-animation.svg?branch=master)](https://travis-ci.org/nearform/react-animation)
+
 This package provides components you can use to easily add animation to your components, along with a set of pre-built animations and timing functions.
 
 ## Demos
