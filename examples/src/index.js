@@ -333,7 +333,7 @@ const DemoPage = ({ className }) => {
             If you wish to use the animations in your styling, be sure to import
             the keyframes also using{' '}
             <code>
-              {`import "@nearform/react-animation/dist/theme/keyframes.css"`}
+              {`import '@nearform/react-animation/dist/theme/keyframes.css'`}
             </code>
             .
           </p>
