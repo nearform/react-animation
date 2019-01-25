@@ -333,7 +333,7 @@ const DemoPage = ({ className }) => {
             If you wish to use the animations in your styling, be sure to import
             the keyframes also using{' '}
             <code>
-              `import "@nearform/react-animation/dist/theme/keyframes.css"`
+              {`import "@nearform/react-animation/dist/theme/keyframes.css"`}
             </code>
             .
           </p>
@@ -589,6 +589,7 @@ const StyledDemoPage = styled(DemoPage)`
 
       &-container {
         display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
       }
 
@@ -600,7 +601,7 @@ const StyledDemoPage = styled(DemoPage)`
       &-box {
         border-radius: 6px;
         height: 100px;
-        margin: 10px 16px;
+        margin: 10px 20px;
         width: 100px;
         border: 4px solid #522f95;
         background: #7a29aa;
