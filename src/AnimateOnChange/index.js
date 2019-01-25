@@ -7,6 +7,7 @@ import '../theme/keyframes.css'
  * Applies an animation to any changes of child content or components.
  *
  * Properties:
+ * animate: { Boolean } Whether to perform the animation (optional)
  * children
  * animationIn: {String} A named animation as defined in the theme animations
  * animationOut: {String} A named animation as defined in the theme animations
@@ -15,10 +16,12 @@ import '../theme/keyframes.css'
  */
 
 const AnimateOnChange = ({
-  children,
+  animate,
   animationIn,
   animationOut,
+  children,
   durationOut,
+  manual,
   style
 }) => {
   const [animation, setAnimation] = useState('')
@@ -28,10 +31,16 @@ const AnimateOnChange = ({
   useLayoutEffect(
     () => {
       // Don't run the effect the first time through
-      if (firstUpdate.current) {
+      if (firstUpdate.current && !animate) {
         firstUpdate.current = false
         return
       }
+
+      if (animate && !firstUpdate.current) {
+        setDisplayContent(children)
+        return
+      }
+
       setAnimation('out')
       const timeout = setTimeout(() => {
         setAnimation('in')
@@ -65,10 +74,12 @@ const AnimateOnChange = ({
 }
 
 AnimateOnChange.propTypes = {
+  animate: PropTypes.bool,
   children: PropTypes.any.isRequired,
   durationOut: PropTypes.number,
   animationIn: PropTypes.string,
   animationOut: PropTypes.string,
+  manual: PropTypes.bool,
   style: PropTypes.object
 }
 

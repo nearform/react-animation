@@ -11,7 +11,7 @@ You can see each of the components and animations that are included on [this dem
 ## Usage
 
 ```
-npm install @nearform/react-animation
+npm install -s @nearform/react-animation
 ```
 
 ## Components

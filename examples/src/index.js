@@ -132,7 +132,7 @@ const DemoPage = ({ className }) => {
             <code>^16.8.0-alpha.1</code> or <code>next</code>.
           </p>
           <p>
-            <code>npm install @nearform/react-animation</code>
+            <code>npm install -s @nearform/react-animation</code>
           </p>
         </div>
         <div className="page-content">
@@ -161,7 +161,7 @@ const DemoPage = ({ className }) => {
 </AnimateOnChange>`}</code>
               </pre>
               <div className="example-aoc-default">
-                <AnimateOnChange>{randomWord}</AnimateOnChange>
+                <AnimateOnChange animate>{randomWord}</AnimateOnChange>
               </div>
             </div>
           </LazyLoad>
