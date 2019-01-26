@@ -228,6 +228,36 @@ const DemoPage = ({ className }) => {
             can overwrite that by passing an optional <code>style</code> object.
           </p>
           <p>Find all the available animations listed under Animations.</p>
+          
+          <h3>change</h3>
+          <p>
+            By default the animation is triggered when <code>children</code> change.
+            The default behavior can be overridden using the <code>change</code> property.
+            The animation will trigger when the provided value changes, instead of <code>children</code>.
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`
+<AnimateOnChange 
+  change={valueThatChangesOverTime}
+  animationIn="beat"
+  animationOut=""
+>
+  Static content
+</AnimateOnChange>`}</code>
+              </pre>
+              <div className="example-aoc-default">
+                <AnimateOnChange 
+                  change={randomWord}
+                  animationIn="beat" 
+                  animationOut="" 
+                >
+                  Static content
+                </AnimateOnChange>
+              </div>
+            </div>
+          </LazyLoad>
         </div>
         <div className="page-content">
           <h2>HideUntilLoaded</h2>

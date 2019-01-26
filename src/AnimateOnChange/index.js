@@ -21,7 +21,7 @@ const AnimateOnChange = ({
   animationOut,
   children,
   durationOut,
-  manual,
+  change,
   style
 }) => {
   const [animation, setAnimation] = useState('')
@@ -51,13 +51,11 @@ const AnimateOnChange = ({
         clearTimeout(timeout)
       }
     },
-    [children]
+    [change || children]
   )
 
   const styles = {
     display: 'inline-block',
-    transition: `opacity ${durationOut}ms ease-out`,
-    opacity: animation === 'out' ? 0 : 1,
     ...style
   }
 
@@ -79,12 +77,14 @@ AnimateOnChange.propTypes = {
   durationOut: PropTypes.number,
   animationIn: PropTypes.string,
   animationOut: PropTypes.string,
-  manual: PropTypes.bool,
+  change: PropTypes.any,
   style: PropTypes.object
 }
 
 AnimateOnChange.defaultProps = {
-  durationOut: 200
+  durationOut: 200,
+  animationIn: 'fadeIn',
+  animationOut: 'fadeOut'
 }
 
 AnimateOnChange.displayName = 'AnimateOnChange'

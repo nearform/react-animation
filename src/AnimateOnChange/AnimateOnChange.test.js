@@ -75,7 +75,7 @@ describe('AnimateOnChange', () => {
 
   it('should not animate when animate is true when if content changes', () => {
     const component = mount(
-      <AnimateOnChange manual animate={false}>
+      <AnimateOnChange animate={false}>
         old
       </AnimateOnChange>
     )

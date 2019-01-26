@@ -35,5 +35,6 @@ export const animations = {
   bounceIn: `pop-in 300ms ${easings.easeOutBack} forwards`,
   bounceOut: `pop-out 300ms ${easings.easeInBack} forwards`,
   slideIn: `slide-in 500ms ${easings.easeInOutBack} forwards`,
-  slideOut: `slide-out 350ms ${easings.easeOutBack} forwards`
+  slideOut: `slide-out 350ms ${easings.easeOutBack} forwards`,
+  beat: `beat 500ms ${easings.easeInOutQuad} forwards`
 }
