@@ -61,42 +61,6 @@ describe('AnimateOnChange', () => {
     expect(component.text()).toEqual('new')
   })
 
-  it('should animate when animate is true', () => {
-    const component = mount(<AnimateOnChange animate>123</AnimateOnChange>)
-    expect(component.find('span').get(0).props.style.opacity).toEqual(0)
-    expect(component.text()).toEqual('123')
-
-    // Test opacity and new value after duration has passed
-    jest.runAllTimers()
-    component.update()
-    expect(component.find('span').get(0).props.style.opacity).toEqual(1)
-    expect(component.text()).toEqual('123')
-  })
-
-  it('should not animate when animate is true when if content changes', () => {
-    const component = mount(
-      <AnimateOnChange manual animate={false}>
-        old
-      </AnimateOnChange>
-    )
-    expect(component.find('span').get(0).props.style.opacity).toEqual(1)
-    expect(component.text()).toEqual('old')
-
-    // Update the children to trigger animation
-    component.setProps({ children: 'new' })
-    component.update()
-
-    // Expect new value straight away as there's no transition this time
-    expect(component.find('span').get(0).props.style.opacity).toEqual(1)
-    expect(component.text()).toEqual('new')
-
-    // Test opacity and new value after duration has passed
-    jest.runAllTimers()
-    component.update()
-    expect(component.find('span').get(0).props.style.opacity).toEqual(1)
-    expect(component.text()).toEqual('new')
-  })
-
   it('should set named animation on in and out', () => {
     const component = mount(
       <AnimateOnChange animationIn="popIn" animationOut="popOut">

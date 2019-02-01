@@ -16,12 +16,10 @@ import '../theme/keyframes.css'
  */
 
 const AnimateOnChange = ({
-  animate,
   animationIn,
   animationOut,
   children,
   durationOut,
-  manual,
   style
 }) => {
   const [animation, setAnimation] = useState('')
@@ -31,13 +29,8 @@ const AnimateOnChange = ({
   useLayoutEffect(
     () => {
       // Don't run the effect the first time through
-      if (firstUpdate.current && !animate) {
+      if (firstUpdate.current) {
         firstUpdate.current = false
-        return
-      }
-
-      if (animate && !firstUpdate.current) {
-        setDisplayContent(children)
         return
       }
 
@@ -74,12 +67,10 @@ const AnimateOnChange = ({
 }
 
 AnimateOnChange.propTypes = {
-  animate: PropTypes.bool,
   children: PropTypes.any.isRequired,
   durationOut: PropTypes.number,
   animationIn: PropTypes.string,
   animationOut: PropTypes.string,
-  manual: PropTypes.bool,
   style: PropTypes.object
 }
 

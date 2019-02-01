@@ -47,10 +47,12 @@ describe('HideUntilLoaded', () => {
     const component = mount(
       <HideUntilLoaded imageToLoad="url">123</HideUntilLoaded>
     )
-    expect(component.find('.content').get(0).props.style.opacity).toEqual(0)
-    expect(component.find('.content').get(0).props.style.animation).toEqual(
-      undefined
-    )
+    expect(
+      component.find('.hide-until-loaded-content').get(0).props.style.opacity
+    ).toEqual(0)
+    expect(
+      component.find('.hide-until-loaded-content').get(0).props.style.animation
+    ).toEqual(undefined)
   })
 
   it('should show content when loaded', () => {
@@ -58,10 +60,12 @@ describe('HideUntilLoaded', () => {
     const component = mount(
       <HideUntilLoaded imageToLoad="url">123</HideUntilLoaded>
     )
-    expect(component.find('.content').get(0).props.style.opacity).toEqual(1)
-    expect(component.find('.content').get(0).props.style.transition).toEqual(
-      expect.stringContaining('opacity 500ms ease-out')
-    )
+    expect(
+      component.find('.hide-until-loaded-content').get(0).props.style.opacity
+    ).toEqual(1)
+    expect(
+      component.find('.hide-until-loaded-content').get(0).props.style.transition
+    ).toEqual(expect.stringContaining('opacity 500ms ease-out'))
   })
 
   it('should apply animationIn when loaded', () => {
@@ -71,9 +75,9 @@ describe('HideUntilLoaded', () => {
         123
       </HideUntilLoaded>
     )
-    expect(component.find('.content').get(0).props.style.animation).toEqual(
-      expect.stringContaining('pop-in')
-    )
+    expect(
+      component.find('.hide-until-loaded-content').get(0).props.style.animation
+    ).toEqual(expect.stringContaining('pop-in'))
   })
 
   it('should apply animationIn when errored (as a fallback)', () => {
@@ -83,9 +87,9 @@ describe('HideUntilLoaded', () => {
         123
       </HideUntilLoaded>
     )
-    expect(component.find('.content').get(0).props.style.animation).toEqual(
-      expect.stringContaining('pop-in')
-    )
+    expect(
+      component.find('.hide-until-loaded-content').get(0).props.style.animation
+    ).toEqual(expect.stringContaining('pop-in'))
   })
 
   it('should show a given spinner', () => {
@@ -110,7 +114,9 @@ describe('HideUntilLoaded', () => {
         123
       </HideUntilLoaded>
     )
-    expect(component.find('.spinner').get(0).props.style.opacity).toEqual(0)
+    expect(
+      component.find('.hide-until-loaded-spinner').get(0).props.style.opacity
+    ).toEqual(0)
   })
 
   it('should accept custom styles', () => {
