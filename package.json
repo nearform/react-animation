@@ -1,13 +1,14 @@
 {
   "name": "@nearform/react-animation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Helpful animation components for adding movement to your React components",
-  "main": "dist/index.js",
+  "main": "dist/react-animation.js",
   "scripts": {
     "test": "jest --watch",
     "start": "webpack-dev-server --mode development",
-    "build": "microbundle",
-    "dev": "microbundle watch",
+    "prebuild": "rm -rf ./dist",
+    "build": "webpack --config webpack.dist.config.js",
+    "dev": "npm start",
     "deploy": "gh-pages -d examples/dist",
     "publish-demo": "npm run build && npm run deploy"
   },
