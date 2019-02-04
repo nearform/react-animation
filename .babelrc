@@ -1,0 +1,11 @@
+{
+  "presets": [["env", { "modules": false }], "react"],
+  "plugins": ["transform-object-rest-spread"],
+  "ignore": [],
+  "env": {
+    "test": {
+      "presets": [["env"], "react"],
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+}
