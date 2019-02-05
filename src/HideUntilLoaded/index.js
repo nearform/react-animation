@@ -40,7 +40,7 @@ const HideUntilLoaded = ({
     contentStyles.visibility = 'hidden'
   } else {
     if (animationIn) {
-      contentStyles.animation = animations[animationIn]
+      contentStyles.animation = animations[animationIn] || animationIn
     } else {
       contentStyles.opacity = 1
       contentStyles.transition = 'opacity 500ms ease-out'
