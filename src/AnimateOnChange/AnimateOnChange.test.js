@@ -87,6 +87,29 @@ describe('AnimateOnChange', () => {
     expect(component.text()).toEqual('new')
   })
 
+  it('should set custom animation properties on in and out', () => {
+    const component = mount(
+      <AnimateOnChange animationIn="in test" animationOut="out test">
+        old
+      </AnimateOnChange>
+    )
+    expect(component.find('span').get(0).props.style.animation).toEqual(
+      undefined
+    )
+
+    component.setProps({ children: 'new' })
+    component.update()
+    expect(component.find('span').get(0).props.style.animation).toEqual(
+      expect.stringContaining('out test')
+    )
+
+    jest.runAllTimers()
+    component.update()
+    expect(component.find('span').get(0).props.style.animation).toEqual(
+      expect.stringContaining('in test')
+    )
+  })
+
   it('should clear timeout on unmount', () => {
     const component = mount(<AnimateOnChange>123</AnimateOnChange>)
     component.setProps({ children: 'new' })

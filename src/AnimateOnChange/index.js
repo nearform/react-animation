@@ -56,10 +56,14 @@ const AnimateOnChange = ({
 
   switch (animation) {
     case 'in':
-      styles.animation = animationIn ? animations[animationIn] : undefined
+      if (animationIn) {
+        styles.animation = animations[animationIn] || animationIn
+      }
       break
     case 'out':
-      styles.animation = animationOut ? animations[animationOut] : undefined
+      if (animationOut) {
+        styles.animation = animations[animationOut] || animationOut
+      }
       break
   }
 
