@@ -10,7 +10,8 @@
     "build": "webpack --config webpack.dist.config.js",
     "dev": "npm start",
     "deploy": "gh-pages -d examples/dist",
-    "publish-demo": "npm run build && npm run deploy"
+    "publish-demo": "npm run build && npm run deploy",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -69,7 +70,8 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "regenerator-runtime": "^0.13.1"
