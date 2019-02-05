@@ -9,7 +9,7 @@ import {
   HideUntilLoaded,
   animations,
   easings
-} from '../../src'
+} from '../../dist/react-animation'
 import './styles/normalize.css'
 import './styles/global.css'
 
