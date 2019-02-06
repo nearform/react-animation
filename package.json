@@ -1,8 +1,12 @@
 {
   "name": "@nearform/react-animation",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Helpful animation components for adding movement to your React components",
   "main": "dist/react-animation.js",
+  "files": [
+    "react-animation.js",
+    "keyframes.css"
+  ],
   "scripts": {
     "test": "jest --watch",
     "start": "webpack-dev-server --mode development",
@@ -43,6 +47,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",

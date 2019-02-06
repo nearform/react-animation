@@ -1,6 +1,7 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const commonConfig = require('./webpack.common')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = merge(commonConfig, {
   entry: path.join(__dirname, './src/index.js'),
@@ -26,5 +27,13 @@ module.exports = merge(commonConfig, {
       amd: 'ReactDOM',
       root: 'ReactDOM'
     }
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'src/theme/keyframes.css',
+        to: ''
+      }
+    ])
+  ]
 })
