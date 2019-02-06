@@ -437,7 +437,7 @@ ${randomWord}
           <p>
             Note: If you're using the animations by themselves you will also
             need to add in the bundle's <code>keyframes</code> using{' '}
-            <code>{`import '@nearform/react-animation/dist/theme/keyframes.css'`}</code>
+            <code>{`import '@nearform/react-animation/dist/keyframes.css'`}</code>
             .
           </p>
           <p>
