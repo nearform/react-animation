@@ -9,7 +9,7 @@ import {
   HideUntilLoaded,
   animations,
   easings
-} from '../../dist/react-animation'
+} from '../../src'
 import './styles/normalize.css'
 import './styles/global.css'
 
@@ -228,6 +228,110 @@ const DemoPage = ({ className }) => {
             can overwrite that by passing an optional <code>style</code> object.
           </p>
           <p>Find all the available animations listed under Animations.</p>
+
+          <h3>Custom animations</h3>
+          <p>
+            We can even pass out own string values for the{' '}
+            <code>animation</code> property on the "in" and "out" stages. We do
+            this by passing the string to <code>animationIn</code> and{' '}
+            <code>animationOut</code>.
+          </p>
+          <p>
+            Note: You will need to define <code>custom-animation-in</code> and{' '}
+            <code>custom-animation-out</code> as keyframes yourself.
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`This is
+<AnimateOnChange
+  animationIn="custom-animation-in 500ms ease-out forwards"
+  animationOut="custom-animation-out 500ms ease-out forwards"
+  durationOut={500}
+>
+${randomWord}
+</AnimateOnChange>`}</code>
+              </pre>
+              <div className="example-aoc-animations">
+                <div>
+                  This is{' '}
+                  <span className="example-aoc-animations-text">
+                    <AnimateOnChange
+                      animationIn="custom-animation-in 500ms ease-out forwards"
+                      animationOut="custom-animation-out 500ms ease-out forwards"
+                      durationOut={500}
+                    >
+                      {randomWord}
+                    </AnimateOnChange>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </LazyLoad>
+
+          <h3>Custom class name</h3>
+          <p>
+            If we want to control things more precisely or animate children
+            elements, we can pass in a class name instead. By default the class
+            names are:
+            <code>animate-on-change</code>, <code>animate-on-change-in</code>,
+            and <code>animate-on-change-out</code>. The last two are
+            automatically generated, so if you supply the <code>className</code>{' '}
+            of "foo" it will apply <code>foo</code>, <code>foo-in</code>, and{' '}
+            <code>foo-out</code>.
+          </p>
+          <LazyLoad height={200}>
+            <div className="example">
+              <pre>
+                <code>{`This is
+<AnimateOnChange
+  className="foo"
+  durationOut={500}
+>
+${randomWord}
+</AnimateOnChange>`}</code>
+              </pre>
+              <div className="example-aoc-animations">
+                <div>
+                  Class names are{' '}
+                  <span className="example-aoc-animations-text">
+                    <AnimateOnChange className="foo" durationOut={500}>
+                      <div className="container">{randomWord}</div>
+                    </AnimateOnChange>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </LazyLoad>
+          <p>The code for the above animation looks like this:</p>
+          <pre>
+            <code>{`.foo {
+.container {
+    display: inline-block;
+    position: relative;
+    padding: 0 0 0 10px;
+    width: 180px;
+
+    &:after {
+      background-color: rgb(73, 41, 136);
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 100%;
+      bottom: 0;
+      left: 0;
+      transition: all ${easings.easeOutExpo} 500ms 250ms;
+    }
+  }
+
+  &.foo-out {
+    .container:after {
+      right: 0;
+      transition: all ${easings.easeInOutBack} 500ms;
+    }
+  }
+}`}</code>
+          </pre>
         </div>
         <div className="page-content">
           <h2>HideUntilLoaded</h2>
@@ -605,6 +709,51 @@ const StyledDemoPage = styled(DemoPage)`
         width: 100px;
         border: 4px solid #522f95;
         background: #7a29aa;
+      }
+    }
+  }
+
+  @keyframes custom-animation-in {
+    from {
+      transform: scale(2);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes custom-animation-out {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(2);
+    }
+  }
+
+  .foo {
+    .container {
+      display: inline-block;
+      position: relative;
+      padding: 0 0 0 10px;
+      width: 180px;
+
+      &:after {
+        background-color: rgb(73, 41, 136);
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 100%;
+        bottom: 0;
+        left: 0;
+        transition: all ${easings.easeOutExpo} 500ms 250ms;
+      }
+    }
+
+    &.foo-out {
+      .container:after {
+        right: 0;
+        transition: all ${easings.easeInOutBack} 500ms;
       }
     }
   }

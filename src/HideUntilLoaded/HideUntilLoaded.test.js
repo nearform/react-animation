@@ -32,7 +32,7 @@ describe('HideUntilLoaded', () => {
 
   it('should return children if no image specified', () => {
     const component = mount(
-      <HideUntilLoaded>
+      <HideUntilLoaded imageToLoad="url">
         <div className="test-div">
           <p />
           <p />
@@ -78,6 +78,18 @@ describe('HideUntilLoaded', () => {
     expect(
       component.find('.hide-until-loaded-content').get(0).props.style.animation
     ).toEqual(expect.stringContaining('pop-in'))
+  })
+
+  it('should apply custom animationIn text when loaded', () => {
+    usePreloadImage.mockImplementation(() => [false, true])
+    const component = mount(
+      <HideUntilLoaded imageToLoad="url" animationIn="test text">
+        123
+      </HideUntilLoaded>
+    )
+    expect(
+      component.find('.hide-until-loaded-content').get(0).props.style.animation
+    ).toEqual(expect.stringContaining('test text'))
   })
 
   it('should apply animationIn when errored (as a fallback)', () => {

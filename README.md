@@ -31,6 +31,7 @@ The following (optional) properties can be used:
 
 - animationIn
 - animationOut
+- className
 - durationOut
 - style
 
@@ -41,6 +42,16 @@ You can reference these by name, for example:
     <AnimateOnChange animationIn="popIn" animationOut="popOut">...</AnimateOnChange>
 
 This will apply a `popOut` animation when removing the old content, and a `popIn` animation on the new content.
+
+#### Custom `animationIn`and `animationOut` values
+
+You can specify a built-in animation by name and it will call in the relevant animation property for you. If you prefer you can also supply a string here such as `my-animation 500ms ease-out forwards`. This way you can specify your own animation, as long as you've defined the `my-animation` keyframes somewhere.
+
+#### ClassName
+
+If you need more control, such as animating child components of pseudo-elements, you can supply a class name. By default, the component will add a `animate-on-change` class along with either `animate-on-change-in` and `animate-on-change-out` depending on the stage of the animation.
+
+You can supply a `className` of "foo" and it will apply `foo`, `foo-in` and `foo-out` as necessary.
 
 ### HideUntilLoaded
 

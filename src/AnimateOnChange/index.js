@@ -19,6 +19,7 @@ const AnimateOnChange = ({
   animationIn,
   animationOut,
   children,
+  className,
   durationOut,
   style
 }) => {
@@ -49,25 +50,34 @@ const AnimateOnChange = ({
 
   const styles = {
     display: 'inline-block',
-    transition: `opacity ${durationOut}ms ease-out`,
-    opacity: animation === 'out' ? 0 : 1,
+    transition: !className && `opacity ${durationOut}ms ease-out`,
+    opacity: !className && animation === 'out' ? 0 : 1,
     ...style
   }
 
   switch (animation) {
     case 'in':
-      styles.animation = animationIn ? animations[animationIn] : undefined
+      styles.animation = animations[animationIn] || animationIn
       break
     case 'out':
-      styles.animation = animationOut ? animations[animationOut] : undefined
+      styles.animation = animations[animationOut] || animationOut
       break
   }
 
-  return <span style={styles}>{displayContent}</span>
+  return (
+    <span
+      className={`${className || 'animate-on-change'} ${className ||
+        'animate-on-change'}-${animation}`}
+      style={styles}
+    >
+      {displayContent}
+    </span>
+  )
 }
 
 AnimateOnChange.propTypes = {
   children: PropTypes.any.isRequired,
+  className: PropTypes.string,
   durationOut: PropTypes.number,
   animationIn: PropTypes.string,
   animationOut: PropTypes.string,

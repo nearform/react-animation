@@ -87,6 +87,95 @@ describe('AnimateOnChange', () => {
     expect(component.text()).toEqual('new')
   })
 
+  it('should set custom animation properties on in and out', () => {
+    const component = mount(
+      <AnimateOnChange animationIn="in test" animationOut="out test">
+        old
+      </AnimateOnChange>
+    )
+    expect(component.find('span').get(0).props.style.animation).toEqual(
+      undefined
+    )
+
+    component.setProps({ children: 'new' })
+    component.update()
+    expect(component.find('span').get(0).props.style.animation).toEqual(
+      expect.stringContaining('out test')
+    )
+
+    jest.runAllTimers()
+    component.update()
+    expect(component.find('span').get(0).props.style.animation).toEqual(
+      expect.stringContaining('in test')
+    )
+  })
+
+  it('should set default class names on in and out', () => {
+    const className = 'animate-on-change'
+    const component = mount(<AnimateOnChange>old</AnimateOnChange>)
+    expect(component.find('span').get(0).props.className).toEqual(
+      expect.stringContaining(className)
+    )
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-in`)
+    )
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-out`)
+    )
+
+    component.setProps({ children: 'new' })
+    component.update()
+    expect(component.find('span').get(0).props.className).toEqual(
+      expect.stringContaining(`${className}-out`)
+    )
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-in`)
+    )
+
+    jest.runAllTimers()
+    component.update()
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-out`)
+    )
+    expect(component.find('span').get(0).props.className).toEqual(
+      expect.stringContaining(`${className}-in`)
+    )
+  })
+
+  it('should set custom class names on in and out', () => {
+    const className = 'test'
+    const component = mount(
+      <AnimateOnChange className={className}>old</AnimateOnChange>
+    )
+    expect(component.find('span').get(0).props.className).toEqual(
+      expect.stringContaining(className)
+    )
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-in`)
+    )
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-out`)
+    )
+
+    component.setProps({ children: 'new' })
+    component.update()
+    expect(component.find('span').get(0).props.className).toEqual(
+      expect.stringContaining(`${className}-out`)
+    )
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-in`)
+    )
+
+    jest.runAllTimers()
+    component.update()
+    expect(component.find('span').get(0).props.className).not.toEqual(
+      expect.stringContaining(`${className}-out`)
+    )
+    expect(component.find('span').get(0).props.className).toEqual(
+      expect.stringContaining(`${className}-in`)
+    )
+  })
+
   it('should clear timeout on unmount', () => {
     const component = mount(<AnimateOnChange>123</AnimateOnChange>)
     component.setProps({ children: 'new' })
