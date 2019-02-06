@@ -10,7 +10,8 @@
     "build": "webpack --config webpack.dist.config.js",
     "dev": "npm start",
     "deploy": "gh-pages -d examples/dist",
-    "publish-demo": "npm run build && npm run deploy",
+    "build-demo": "webpack",
+    "publish-demo": "npm run build && npm run build-demo && npm run deploy",
     "prepublishOnly": "npm run build"
   },
   "repository": {
