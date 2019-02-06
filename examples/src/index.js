@@ -422,7 +422,6 @@ ${randomWord}
               </div>
             </div>
           </LazyLoad>
-          <p>The available animation names are defined next...</p>
         </div>
         <div className="page-content">
           <h2>Animations</h2>
@@ -430,16 +429,6 @@ ${randomWord}
             <code>
               import {`{ animations }`} from '@nearform/react-animation'
             </code>
-          </p>
-          <p>
-            You will find a set of animations included with this repo. They come
-            with their own keyframes which are added by the helper components.
-            If you wish to use the animations in your styling, be sure to import
-            the keyframes also using{' '}
-            <code>
-              {`import '@nearform/react-animation/dist/theme/keyframes.css'`}
-            </code>
-            .
           </p>
           <p>
             Animations can be applied to your styling in animation properties
