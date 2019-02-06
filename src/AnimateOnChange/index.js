@@ -19,12 +19,17 @@ const AnimateOnChange = ({
   animationIn,
   animationOut,
   children,
+  className,
   durationOut,
   style
 }) => {
   const [animation, setAnimation] = useState('')
   const [displayContent, setDisplayContent] = useState(children)
   const firstUpdate = useRef(true)
+
+  if (!className) {
+    className = 'animate-on-change'
+  }
 
   useLayoutEffect(
     () => {
@@ -49,8 +54,8 @@ const AnimateOnChange = ({
 
   const styles = {
     display: 'inline-block',
-    transition: `opacity ${durationOut}ms ease-out`,
-    opacity: animation === 'out' ? 0 : 1,
+    transition: !className && `opacity ${durationOut}ms ease-out`,
+    opacity: !className && animation === 'out' ? 0 : 1,
     ...style
   }
 
@@ -63,11 +68,16 @@ const AnimateOnChange = ({
       break
   }
 
-  return <span style={styles}>{displayContent}</span>
+  return (
+    <span className={`${className} ${className}-${animation}`} style={styles}>
+      {displayContent}
+    </span>
+  )
 }
 
 AnimateOnChange.propTypes = {
   children: PropTypes.any.isRequired,
+  className: PropTypes.string,
   durationOut: PropTypes.number,
   animationIn: PropTypes.string,
   animationOut: PropTypes.string,
