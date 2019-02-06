@@ -435,6 +435,12 @@ ${randomWord}
             such as <code>{`style={{animation: animations.popIn}}`}</code>
           </p>
           <p>
+            Note: If you're using the animations by themselves you will also
+            need to add in the bundle's <code>keyframes</code> using{' '}
+            <code>{`import '@nearform/react-animation/dist/theme/keyframes.css'`}</code>
+            .
+          </p>
+          <p>
             If the animation isn't right you can override specific animation
             properties such as duration or timing function as needed.
           </p>
