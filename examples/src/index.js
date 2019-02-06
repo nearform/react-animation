@@ -128,8 +128,8 @@ const DemoPage = ({ className }) => {
           <p>
             <strong>IMPORTANT: </strong> This package uses{' '}
             <a href="https://reactjs.org/docs/hooks-intro.html">hooks</a>. This
-            means that you will need to upgrade React and React DOM to{' '}
-            <code>^16.8.0-alpha.1</code> or <code>next</code>.
+            means that it requires React and React DOM version{' '}
+            <code>^16.8.0</code> or newer.
           </p>
           <p>
             <code>npm install -s @nearform/react-animation</code>
