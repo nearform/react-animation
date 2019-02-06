@@ -27,10 +27,6 @@ const AnimateOnChange = ({
   const [displayContent, setDisplayContent] = useState(children)
   const firstUpdate = useRef(true)
 
-  if (!className) {
-    className = 'animate-on-change'
-  }
-
   useLayoutEffect(
     () => {
       // Don't run the effect the first time through
@@ -69,7 +65,11 @@ const AnimateOnChange = ({
   }
 
   return (
-    <span className={`${className} ${className}-${animation}`} style={styles}>
+    <span
+      className={`${className || 'animate-on-change'} ${className ||
+        'animate-on-change'}-${animation}`}
+      style={styles}
+    >
       {displayContent}
     </span>
   )
