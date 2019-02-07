@@ -1,4 +1,5 @@
 import React from 'react'
+import { act } from 'react-dom/test-utils'
 import { mount } from 'enzyme'
 import AnimateOnChange from './'
 
@@ -47,16 +48,27 @@ describe('AnimateOnChange', () => {
     expect(component.text()).toEqual('old')
 
     // Update the children to trigger animation
-    component.setProps({ children: 'new' })
-    component.update()
+    act(() => {
+      component.setProps({ children: 'new' })
+    })
+
+    act(() => {
+      component.update()
+    })
 
     // Expect old value while transitioning out
     expect(component.find('span').get(0).props.style.opacity).toEqual(0)
     expect(component.text()).toEqual('old')
 
     // Test opacity and new value after duration has passed
-    jest.runAllTimers()
-    component.update()
+
+    act(() => {
+      jest.runAllTimers()
+    })
+
+    act(() => {
+      component.update()
+    })
     expect(component.find('span').get(0).props.style.opacity).toEqual(1)
     expect(component.text()).toEqual('new')
   })
@@ -72,15 +84,27 @@ describe('AnimateOnChange', () => {
     )
     expect(component.text()).toEqual('old')
 
-    component.setProps({ children: 'new' })
-    component.update()
+    act(() => {
+      component.setProps({ children: 'new' })
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.style.animation).toEqual(
       expect.stringContaining('pop-out')
     )
     expect(component.text()).toEqual('old')
 
-    jest.runAllTimers()
-    component.update()
+    act(() => {
+      jest.runAllTimers()
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.style.animation).toEqual(
       expect.stringContaining('pop-in')
     )
@@ -97,14 +121,26 @@ describe('AnimateOnChange', () => {
       undefined
     )
 
-    component.setProps({ children: 'new' })
-    component.update()
+    act(() => {
+      component.setProps({ children: 'new' })
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.style.animation).toEqual(
       expect.stringContaining('out test')
     )
 
-    jest.runAllTimers()
-    component.update()
+    act(() => {
+      jest.runAllTimers()
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.style.animation).toEqual(
       expect.stringContaining('in test')
     )
@@ -123,8 +159,14 @@ describe('AnimateOnChange', () => {
       expect.stringContaining(`${className}-out`)
     )
 
-    component.setProps({ children: 'new' })
-    component.update()
+    act(() => {
+      component.setProps({ children: 'new' })
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.className).toEqual(
       expect.stringContaining(`${className}-out`)
     )
@@ -132,8 +174,14 @@ describe('AnimateOnChange', () => {
       expect.stringContaining(`${className}-in`)
     )
 
-    jest.runAllTimers()
-    component.update()
+    act(() => {
+      jest.runAllTimers()
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.className).not.toEqual(
       expect.stringContaining(`${className}-out`)
     )
@@ -157,8 +205,14 @@ describe('AnimateOnChange', () => {
       expect.stringContaining(`${className}-out`)
     )
 
-    component.setProps({ children: 'new' })
-    component.update()
+    act(() => {
+      component.setProps({ children: 'new' })
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.className).toEqual(
       expect.stringContaining(`${className}-out`)
     )
@@ -166,8 +220,14 @@ describe('AnimateOnChange', () => {
       expect.stringContaining(`${className}-in`)
     )
 
-    jest.runAllTimers()
-    component.update()
+    act(() => {
+      jest.runAllTimers()
+    })
+
+    act(() => {
+      component.update()
+    })
+
     expect(component.find('span').get(0).props.className).not.toEqual(
       expect.stringContaining(`${className}-out`)
     )
@@ -178,9 +238,18 @@ describe('AnimateOnChange', () => {
 
   it('should clear timeout on unmount', () => {
     const component = mount(<AnimateOnChange>123</AnimateOnChange>)
-    component.setProps({ children: 'new' })
-    component.update()
-    component.unmount()
+    act(() => {
+      component.setProps({ children: 'new' })
+    })
+
+    act(() => {
+      component.update()
+    })
+
+    act(() => {
+      component.unmount()
+    })
+
     expect(clearTimeout).toHaveBeenCalledTimes(1)
   })
 

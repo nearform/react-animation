@@ -8,7 +8,9 @@
     "keyframes.css"
   ],
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "start": "webpack-dev-server --mode development",
     "prebuild": "rm -rf ./dist",
     "build": "webpack --config webpack.dist.config.js",
