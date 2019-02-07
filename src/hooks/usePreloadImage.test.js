@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { mount } from 'enzyme'
-import usePreloadImage from './usePreloadImage'
+import usePreloadImage, { eventWrapper } from './usePreloadImage'
 
 const TestComponent = ({ imageToLoad }) => {
   const [errored, loaded] = usePreloadImage(imageToLoad)
@@ -25,5 +25,11 @@ describe('usePreloadImage', () => {
     const component = mount(<TestComponent imageToLoad={undefined} />)
     expect(component.find('.test-div').get(0).props.errored).toEqual('false')
     expect(component.find('.test-div').get(0).props.loaded).toEqual('true')
+  })
+
+  it('should call the setError and setLoaded methods as true in the wrapper', () => {
+    const testFn = jest.fn()
+    eventWrapper(testFn)()
+    expect(testFn).toHaveBeenCalledWith(true)
   })
 })

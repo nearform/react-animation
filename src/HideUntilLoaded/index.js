@@ -23,7 +23,6 @@ const HideUntilLoaded = ({
   style
 }) => {
   const [errored, loaded] = usePreloadImage(imageToLoad)
-  if (!imageToLoad) return children
 
   const styles = {
     display: 'inline-block',
@@ -35,7 +34,7 @@ const HideUntilLoaded = ({
     transition: 'none'
   }
 
-  if (!loaded && !errored) {
+  if (!loaded && !errored && imageToLoad) {
     contentStyles.opacity = 0
     contentStyles.visibility = 'hidden'
   } else {
