@@ -109,17 +109,17 @@ const DemoPage = ({ className }) => {
   return (
     <div>
       <section className={className}>
+        <h1>
+          React Animation{' '}
+          <AnimateOnChange
+            animationOut="bounceOut"
+            animationIn="bounceIn"
+            className="title-emoji"
+          >
+            {randomEmoji}
+          </AnimateOnChange>
+        </h1>
         <div className="page-content">
-          <h1>
-            React Animation{' '}
-            <AnimateOnChange
-              animationOut="bounceOut"
-              animationIn="bounceIn"
-              className="title-emoji"
-            >
-              {randomEmoji}
-            </AnimateOnChange>
-          </h1>
           <p>
             A React toolkit containing components and animation styles for when
             adding animation. This includes animating when something changes,
@@ -517,14 +517,16 @@ const StyledDemoPage = styled(DemoPage)`
   }
 
   h1 {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 34px;
-    margin-top: -54px;
-    margin-bottom: 10px;
+    color: #fff;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 0;
+    width: calc(100% - 40px);
 
     @media ${() => breakpoints.desktop} {
       font-size: 64px;
-      margin-top: -68px;
+      line-height: 80px;
+      max-width: 800px;
     }
 
     .title-emoji {
@@ -546,10 +548,6 @@ const StyledDemoPage = styled(DemoPage)`
     @media ${() => breakpoints.desktop} {
       max-width: 800px;
       width: 100%;
-    }
-
-    &:first-child {
-      margin-top: 120px;
     }
   }
 
