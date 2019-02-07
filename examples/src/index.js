@@ -112,7 +112,11 @@ const DemoPage = ({ className }) => {
         <div className="page-content">
           <h1>
             React Animation{' '}
-            <AnimateOnChange animationOut="bounceOut" animationIn="bounceIn">
+            <AnimateOnChange
+              animationOut="bounceOut"
+              animationIn="bounceIn"
+              className="title-emoji"
+            >
               {randomEmoji}
             </AnimateOnChange>
           </h1>
@@ -516,10 +520,18 @@ const StyledDemoPage = styled(DemoPage)`
     color: rgba(255, 255, 255, 0.9);
     font-size: 34px;
     margin-top: -54px;
+    margin-bottom: 10px;
 
     @media ${() => breakpoints.desktop} {
       font-size: 64px;
-      margin-top: -60px;
+      margin-top: -68px;
+    }
+
+    .title-emoji {
+      @media ${() => breakpoints.desktop} {
+        font-size: 52px;
+        line-height: 72px;
+      }
     }
   }
 
