@@ -121,19 +121,14 @@ const DemoPage = ({ className }) => {
         </h1>
         <div className="page-content">
           <p>
-            A React toolkit containing components and animation styles for when
-            adding animation. This includes animating when something changes,
-            hiding a component until it's image has loaded, along with some
-            reusable animations and timing functions.
+            Animation for your React projects. Includes helpful components and
+            pre-built animations.
           </p>
         </div>
         <div className="page-content">
           <h2>Installation</h2>
           <p>
-            <strong>IMPORTANT: </strong> This package uses{' '}
-            <a href="https://reactjs.org/docs/hooks-intro.html">hooks</a>. This
-            means that it requires React and React DOM version{' '}
-            <code>^16.8.0</code> or newer.
+            Requires React and React DOM version <code>^16.8.0</code> or newer.
           </p>
           <p>
             <code>npm install -s @nearform/react-animation</code>
@@ -544,6 +539,10 @@ const StyledDemoPage = styled(DemoPage)`
     margin: 20px;
     padding: 20px;
     width: calc(100% - 40px);
+
+    &:first-of-type {
+      padding-top: 40px;
+    }
 
     @media ${() => breakpoints.desktop} {
       max-width: 800px;
