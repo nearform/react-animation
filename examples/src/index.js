@@ -131,15 +131,13 @@ const DemoPage = ({ className }) => {
             Requires React and React DOM version <code>^16.8.0</code> or newer.
           </p>
           <p>
-            <code>npm install -s @nearform/react-animation</code>
+            <code>npm install -s react-animation</code>
           </p>
         </div>
         <div className="page-content">
           <h2>AnimateOnChange</h2>
           <p>
-            <code>
-              import {`{ AnimateOnChange }`} from '@nearform/react-animation'
-            </code>
+            <code>import {`{ AnimateOnChange }`} from 'react-animation'</code>
           </p>
           <p>
             The <code>AnimateOnChange</code> component waits for a change to any
@@ -335,9 +333,7 @@ ${randomWord}
         <div className="page-content">
           <h2>HideUntilLoaded</h2>
           <p>
-            <code>
-              import {`{ HideUntilLoaded }`} from '@nearform/react-animation'
-            </code>
+            <code>import {`{ HideUntilLoaded }`} from 'react-animation'</code>
           </p>
           <p>
             Nobody likes a half-downloaded image appearing when rendering our
@@ -425,9 +421,7 @@ ${randomWord}
         <div className="page-content">
           <h2>Animations</h2>
           <p>
-            <code>
-              import {`{ animations }`} from '@nearform/react-animation'
-            </code>
+            <code>import {`{ animations }`} from 'react-animation'</code>
           </p>
           <p>
             Animations can be applied to your styling in animation properties
@@ -436,8 +430,7 @@ ${randomWord}
           <p>
             Note: If you're using the animations by themselves you will also
             need to add in the bundle's <code>keyframes</code> using{' '}
-            <code>{`import '@nearform/react-animation/dist/keyframes.css'`}</code>
-            .
+            <code>{`import 'react-animation/dist/keyframes.css'`}</code>.
           </p>
           <p>
             If the animation isn't right you can override specific animation
@@ -460,7 +453,7 @@ ${randomWord}
         <div className="page-content">
           <h2>Easings (timing functions)</h2>
           <p>
-            <code>import {`{ easings }`} from '@nearform/react-animation'</code>
+            <code>import {`{ easings }`} from 'react-animation'</code>
           </p>
           <p>
             Similar to animations, you can use the built-in easings values in
