@@ -1,9 +1,9 @@
 # React Animation 👌
 
 [![Coverage Status](https://coveralls.io/repos/github/nearform/react-animation/badge.svg?branch=master&v=1.0.6)](https://coveralls.io/github/nearform/react-animation?branch=master)
-[![NPM version](https://img.shields.io/npm/v/@nearform/react-animation.svg)](https://www.npmjs.com/package/@nearform/react-animation)
+[![NPM version](https://img.shields.io/npm/v/react-animation.svg)](https://www.npmjs.com/package/react-animation)
 
-Components and animations to easily add movement to your React projects.
+Components and animations to easily add movement to your React project
 
 ## Demos
 
@@ -12,7 +12,7 @@ You can see each of the components and animations that are included on [this dem
 ## Usage
 
 ```
-npm install --save @nearform/react-animation
+npm install --save react-animation
 ```
 
 ## Components
@@ -79,7 +79,7 @@ import MySpinner from '../MySpinner' // This could be an animated SVG or any Rea
 This package includes some pre-built animations along with their associated keyframes. As well as supplying the animation names to the above components, you can also apply these animations directly to your components:
 
 ```
-import { animations } from '@nearform/react-animation'
+import { animations } from 'react-animation'
 
 const style = {
   animation: animations.popIn
@@ -116,7 +116,7 @@ The full set can be seen in action on the [demo page](https://nearform.github.io
 You can apply these to your component styles like so:
 
 ```
-import { easings } from '@nearform/react-animation'
+import { easings } from 'react-animation'
 
 const style = {
   animation: `pop-in ${easings.easeOutExpo} 500ms forwards`
