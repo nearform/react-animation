@@ -1,5 +1,5 @@
 {
-  "name": "@nearform/react-animation",
+  "name": "react-animation",
   "version": "1.0.6",
   "description": "Helpful animation components for adding movement to your React components",
   "main": "dist/react-animation.js",
