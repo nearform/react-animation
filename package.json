@@ -1,6 +1,6 @@
 {
   "name": "react-animation",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Helpful animation components for adding movement to your React components",
   "main": "dist/react-animation.js",
   "files": [
