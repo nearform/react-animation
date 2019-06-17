@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useRef } from 'react'
+import React, { useEffect, /*useLayoutEffect, */useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { animations } from '../theme'
 import '../theme/keyframes.css'
@@ -27,26 +27,24 @@ const AnimateOnChange = ({
   const [displayContent, setDisplayContent] = useState(children)
   const firstUpdate = useRef(true)
 
-  useLayoutEffect(
+  useEffect(
     () => {
       // Don't run the effect the first time through
       if (firstUpdate.current) {
         firstUpdate.current = false
         return
       }
-
       setAnimation('out')
-      const timeout = setTimeout(() => {
-        setAnimation('in')
-        setDisplayContent(children)
-      }, durationOut)
-
-      return () => {
-        clearTimeout(timeout)
-      }
     },
     [children]
   )
+
+  const showDisplayContent = () => {
+    if (animation === 'out') {
+      setAnimation('in')
+      setDisplayContent(children)
+    }
+  }
 
   const styles = {
     display: 'inline-block',
@@ -66,6 +64,8 @@ const AnimateOnChange = ({
 
   return (
     <span
+      onTransitionEnd={showDisplayContent}
+      onAnimationEnd={showDisplayContent}
       className={`${className || 'animate-on-change'} ${className ||
         'animate-on-change'}-${animation}`}
       style={styles}
