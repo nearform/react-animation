@@ -1,4 +1,4 @@
-import React, { useEffect, /*useLayoutEffect, */useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { animations } from '../theme'
 import '../theme/keyframes.css'
