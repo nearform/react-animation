@@ -11,7 +11,8 @@ module.exports = merge(commonConfig, {
     library: 'ReactAnimation',
     libraryTarget: 'umd',
     publicPath: '/dist/',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    globalObject: 'this'
   },
   externals: {
     // Don't bundle react or react-dom

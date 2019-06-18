@@ -3,8 +3,6 @@ import { act } from 'react-dom/test-utils'
 import { mount } from 'enzyme'
 import AnimateOnChange from './'
 
-jest.useFakeTimers()
-
 describe('AnimateOnChange', () => {
   it('should render child value', () => {
     const component = mount(<AnimateOnChange>123</AnimateOnChange>)
@@ -44,6 +42,7 @@ describe('AnimateOnChange', () => {
 
   it('should animate then change content when children changes', () => {
     const component = mount(<AnimateOnChange>old</AnimateOnChange>)
+    component.simulate('transitionEnd')
     expect(component.find('span').get(0).props.style.opacity).toEqual(1)
     expect(component.text()).toEqual('old')
 
@@ -61,14 +60,11 @@ describe('AnimateOnChange', () => {
     expect(component.text()).toEqual('old')
 
     // Test opacity and new value after duration has passed
-
-    act(() => {
-      jest.runAllTimers()
-    })
-
     act(() => {
       component.update()
     })
+    component.simulate('transitionEnd')
+
     expect(component.find('span').get(0).props.style.opacity).toEqual(1)
     expect(component.text()).toEqual('new')
   })
@@ -79,6 +75,7 @@ describe('AnimateOnChange', () => {
         old
       </AnimateOnChange>
     )
+    component.simulate('transitionEnd')
     expect(component.find('span').get(0).props.style.animation).toEqual(
       undefined
     )
@@ -98,12 +95,9 @@ describe('AnimateOnChange', () => {
     expect(component.text()).toEqual('old')
 
     act(() => {
-      jest.runAllTimers()
-    })
-
-    act(() => {
       component.update()
     })
+    component.simulate('transitionEnd')
 
     expect(component.find('span').get(0).props.style.animation).toEqual(
       expect.stringContaining('pop-in')
@@ -117,6 +111,7 @@ describe('AnimateOnChange', () => {
         old
       </AnimateOnChange>
     )
+    component.simulate('transitionEnd')
     expect(component.find('span').get(0).props.style.animation).toEqual(
       undefined
     )
@@ -134,12 +129,9 @@ describe('AnimateOnChange', () => {
     )
 
     act(() => {
-      jest.runAllTimers()
-    })
-
-    act(() => {
       component.update()
     })
+    component.simulate('transitionEnd')
 
     expect(component.find('span').get(0).props.style.animation).toEqual(
       expect.stringContaining('in test')
@@ -149,6 +141,7 @@ describe('AnimateOnChange', () => {
   it('should set default class names on in and out', () => {
     const className = 'animate-on-change'
     const component = mount(<AnimateOnChange>old</AnimateOnChange>)
+    component.simulate('transitionEnd')
     expect(component.find('span').get(0).props.className).toEqual(
       expect.stringContaining(className)
     )
@@ -175,12 +168,9 @@ describe('AnimateOnChange', () => {
     )
 
     act(() => {
-      jest.runAllTimers()
-    })
-
-    act(() => {
       component.update()
     })
+    component.simulate('transitionEnd')
 
     expect(component.find('span').get(0).props.className).not.toEqual(
       expect.stringContaining(`${className}-out`)
@@ -195,6 +185,7 @@ describe('AnimateOnChange', () => {
     const component = mount(
       <AnimateOnChange className={className}>old</AnimateOnChange>
     )
+    component.simulate('transitionEnd')
     expect(component.find('span').get(0).props.className).toEqual(
       expect.stringContaining(className)
     )
@@ -221,12 +212,9 @@ describe('AnimateOnChange', () => {
     )
 
     act(() => {
-      jest.runAllTimers()
-    })
-
-    act(() => {
       component.update()
     })
+    component.simulate('transitionEnd');
 
     expect(component.find('span').get(0).props.className).not.toEqual(
       expect.stringContaining(`${className}-out`)
@@ -249,8 +237,6 @@ describe('AnimateOnChange', () => {
     act(() => {
       component.unmount()
     })
-
-    expect(clearTimeout).toHaveBeenCalledTimes(1)
   })
 
   it('should accept custom styles', () => {
