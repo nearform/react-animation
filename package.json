@@ -82,6 +82,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "regenerator-runtime": "^0.13.1"
+    "regenerator-runtime": "^0.13.1",
+    "react-transition-group": "^2.7.0"
   }
 }

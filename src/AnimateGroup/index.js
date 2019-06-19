@@ -16,44 +16,75 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import {
   Transition,
   TransitionGroup,
 } from 'react-transition-group'
 import { animations } from '../theme'
+import '../theme/keyframes.css'
 
+/**
+ * Animate a group or list of components.
+ * Animations are applied as components are added to or removed from the group.
+ * NOTE: Child keys are necessary for animations to work correctly.
+ */
 function AnimateGroup( props ) {
 
   const {
+    // Name of animation used when adding a new component.
+    // See theme/index.js for animation names.
     animationIn,
+    // Name of animation used when removing an existing component.
     animationOut,
-    groupClassName,
-    duration = 500,
+    // The CSS class name to apply to the group container.
+    className,
+    // Transition out duration.
+    durationOut,
+    // The group children.
     children
   } = props
 
-  const transitions = {
-    in:  node => node.style = `animation: ${animations[animationIn] || animationIn}`,
-    out: node => node.style = `animation: ${animations[animationOut] || animationOut}`
+  const transition = `transition: opacity ${durationOut}ms ease-out`; 
+  const childState = {
+    hidden: node => node.style = 'display: none',
+    in:     node => node.style = `${transition}; opacity: 1; animation: ${animations[animationIn] || animationIn}`,
+    out:    node => node.style = `${transition}; opacity: 0; animation: ${animations[animationOut] || animationOut}`
   }
 
-  const groupChildren = children.map(child => {
+  const groupChildren = React.Children.toArray(children).map(child => {
     const { key } = child
     return (<Transition
       key={key}
-      timeout={duration}
-      onEntering={transitions.in}
-      onEntered={transitions.in}
-      onExiting={transitions.out}
-      onExited={transitions.out}
+      timeout={500}
+      onEntering={childState.hidden}
+      onEntered={childState.in}
+      onExiting={childState.out}
+      onExited={childState.out}
     >
       {child}
     </Transition>)
     })
 
-    return (<TransitionGroup className={groupClassName}>
+    return (<TransitionGroup className={className}>
       {groupChildren}
     </TransitionGroup>)
 }
+
+AnimateGroup.propTypes = {
+  children:     PropTypes.any.isRequired,
+  className:    PropTypes.string,
+  durationOut:  PropTypes.number,
+  animationIn:  PropTypes.string,
+  animationOut: PropTypes.string
+}
+
+AnimateGroup.defaultProps = {
+  animationIn:  'fadeIn',
+  animationOut: 'fadeOut',
+  durationOut:  200
+}
+
+AnimateGroup.displayName = 'AnimateGroup'
 
 export default AnimateGroup
