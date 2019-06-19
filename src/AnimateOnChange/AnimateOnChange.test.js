@@ -240,21 +240,6 @@ describe('AnimateOnChange', () => {
     )
   })
 
-  it('should clear timeout on unmount', () => {
-    const component = mount(<AnimateOnChange>123</AnimateOnChange>)
-    act(() => {
-      component.setProps({ children: 'new' })
-    })
-
-    act(() => {
-      component.update()
-    })
-
-    act(() => {
-      component.unmount()
-    })
-  })
-
   it('should accept custom styles', () => {
     const component = mount(
       <AnimateOnChange style={{ background: 'red' }}>123</AnimateOnChange>
