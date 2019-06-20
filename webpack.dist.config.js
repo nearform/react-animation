@@ -1,9 +1,52 @@
 const path = require('path')
-const merge = require('webpack-merge')
-const commonConfig = require('./webpack.common')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports = merge(commonConfig, {
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   entry: path.join(__dirname, './src/index.js'),
   output: {
     path: path.join(__dirname, './dist'),
@@ -37,4 +80,4 @@ module.exports = merge(commonConfig, {
       }
     ])
   ]
-})
+}

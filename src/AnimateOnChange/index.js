@@ -17,7 +17,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { animations } from '../theme'
-import '../theme/keyframes.css'
+import styled, { css } from 'styled-components'
 
 /**
  * Applies an animation to any changes of child content or components.
@@ -62,32 +62,33 @@ const AnimateOnChange = ({
     }
   }
 
-  const styles = {
-    display: 'inline-block',
-    transition: !className && `opacity ${durationOut}ms ease-out`,
-    opacity: !className && animation === 'out' ? 0 : 1,
-    ...style
-  }
-
+  let animationCSS;
   switch (animation) {
     case 'in':
-      styles.animation = animations[animationIn] || animationIn
+      animationCSS = animations[animationIn] || animationIn
       break
     case 'out':
-      styles.animation = animations[animationOut] || animationOut
+      animationCSS = animations[animationOut] || animationOut
       break
   }
 
+  const Span = styled.span`
+    display:    'inline-block'
+    transition: ${!className && `opacity ${durationOut}ms ease-out`}
+    opacity:    ${!className && animation === 'out' ? 0 : 1}
+    animation:  ${animationCSS}
+    ${style}
+  `
+
   return (
-    <span
+    <Span
       onTransitionEnd={showDisplayContent}
       onAnimationEnd={showDisplayContent}
       className={`${className || 'animate-on-change'} ${className ||
         'animate-on-change'}-${animation}`}
-      style={styles}
     >
       {displayContent}
-    </span>
+    </Span>
   )
 }
 

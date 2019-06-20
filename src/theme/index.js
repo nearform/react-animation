@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import { css } from 'styled-components'
+import keyframes from './keyframes.js'
+
 // Themed animations and easings to be used by the ui animation utilities
 
 // Timing functions a defined on easings.net
@@ -43,13 +46,13 @@ export const easings = {
 }
 
 export const animations = {
-  fadeIn: `fade-in 500ms ease-out forwards`,
-  fadeOut: `fade-out 400ms ease-out forwards`,
-  fadeInUp: `fade-in-up 800ms ${easings.easeOutExpo} forwards`,
-  popIn: `pop-in 500ms ${easings.easeOutExpo} forwards`,
-  popOut: `pop-out 400ms ${easings.easeOutBack} forwards`,
-  bounceIn: `pop-in 300ms ${easings.easeOutBack} forwards`,
-  bounceOut: `pop-out 300ms ${easings.easeInBack} forwards`,
-  slideIn: `slide-in 500ms ${easings.easeInOutBack} forwards`,
-  slideOut: `slide-out 350ms ${easings.easeOutBack} forwards`
+  fadeIn: css`${keyframes.fadeIn} 500ms ease-out forwards`,
+  fadeOut: css`${keyframes.fadeOut} 400ms ease-out forwards`,
+  fadeInUp: css`${keyframes.fadeInUp} 800ms ${easings.easeOutExpo} forwards`,
+  popIn: css`${keyframes.popIn} 500ms ${easings.easeOutExpo} forwards`,
+  popOut: css`${keyframes.popOut} 400ms ${easings.easeOutBack} forwards`,
+  bounceIn: css`${keyframes.popIn} 300ms ${easings.easeOutBack} forwards`,
+  bounceOut: css`${keyframes.popOut} 300ms ${easings.easeInBack} forwards`,
+  slideIn: css`${keyframes.slideIn} 500ms ${easings.easeInOutBack} forwards`,
+  slideOut: css`${keyframes.slideOut} 350ms ${easings.easeOutBack} forwards`
 }

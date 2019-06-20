@@ -18,10 +18,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import usePreloadImage from '../hooks/usePreloadImage'
 import { animations, easings } from '../theme'
-import '../theme/keyframes.css'
+import styled, { css } from 'styled-components'
 
 /**
- * Anmates in a component once an image has loaded.
+ * Animates in a component once an image has loaded.
  *
  * Properties:
  * children
@@ -40,56 +40,39 @@ const HideUntilLoaded = ({
 }) => {
   const [errored, loaded] = usePreloadImage(imageToLoad)
 
-  const styles = {
-    display: 'inline-block',
-    position: 'relative',
-    ...style
-  }
+  const Container = styled.span`
+    display:  'inline-block'
+    position: 'relative'
+    ${style}`
 
-  const contentStyles = {
+  const notLoaded = (!loaded && !errored)
+
+  const Content = styled.div`
     transition: 'none'
-  }
-
-  if (!loaded && !errored && imageToLoad) {
-    contentStyles.opacity = 0
-    contentStyles.visibility = 'hidden'
-  } else {
-    if (animationIn) {
-      contentStyles.animation = animations[animationIn] || animationIn
-    } else {
-      contentStyles.opacity = 1
-      contentStyles.transition = 'opacity 500ms ease-out'
-    }
-  }
-
-  const spinnerStyles = {
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transition: `opacity 500ms ease-out, transform 0.5s ${
-      easings.easeInOutBack
-    }`
-  }
-
-  if (!loaded && !errored) {
-    spinnerStyles.opacity = 1
-    spinnerStyles.transform = 'translate(-50%, -50%)'
-  } else {
-    spinnerStyles.opacity = 0
-    spinnerStyles.transform = 'translate(-50%, -50%) scale(0.8)'
-  }
-
+    opacity:    ${notLoaded && imageToLoad ? 0 : animationIn ? null : 1}
+    visibility: ${notLoaded && imageToLoad ? 'hidden' : null}
+    animation:  ${!notLoaded && imageToLoad && animationIn ? animations[animationIn] || animationIn : null}
+    transition: ${!notLoaded && imageToLoad && !animationIn ? 'opacity 500ms ease-out' : null}
+    `
+    const SpinnerContainer = styled.div`
+      position:   'absolute'
+      left:       '50%'
+      top:        '50%'
+      transition: 'opacity 500ms ease-out, transform 0.5s ${easings.easeInOutBack}
+      opacity:    ${notLoaded ? 1 : 0}
+      transform:  ${notLoaded ? 'translate(-50%, -50%)' : 'translate(-50%, -50%) scale(0.8)'}
+    `
   return (
-    <span style={styles}>
-      <div className="hide-until-loaded-content" style={contentStyles}>
-        {children}
-      </div>
-      {Spinner && (
-        <div className="hide-until-loaded-spinner" style={spinnerStyles}>
-          <Spinner />
-        </div>
-      )}
-    </span>
+      <Container>
+        <Content className="hide-until-loaded-content">
+          {children}
+        </Content>
+        {Spinner && (
+          <SpinnerContainer className="hide-until-loaded-spinner">
+            <Spinner />
+          </SpinnerContainer>
+        )}
+      </Container>
   )
 }
 
