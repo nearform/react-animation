@@ -22,8 +22,7 @@ import {
   TransitionGroup,
 } from 'react-transition-group'
 import { animations } from '../theme'
-//import '../theme/keyframes.css'
-import { css } from 'styled-components'
+import '../theme/keyframes.css'
 
 /**
  * Animate a group or list of components.
@@ -46,11 +45,14 @@ function AnimateGroup( props ) {
     children
   } = props
 
-  const transition = `transition: opacity ${durationOut}ms ease-out`; 
+  const transition      = `transition: opacity ${durationOut}ms ease-out`
+  const animationInCSS  = animations[animationIn] || animationIn
+  const animationOutCSS = animations[animationOut] || animationOut
+
   const childState = {
     hidden: node => node.style = 'display: none',
-    in:     node => node.style = css`${transition}; opacity: 1; animation: ${animations[animationIn] || animationIn}`,
-    out:    node => node.style = css`${transition}; opacity: 0; animation: ${animations[animationOut] || animationOut}`
+    in:     node => node.style = `${transition}; opacity: 1; animation: ${animationInCSS}`,
+    out:    node => node.style = `${transition}; opacity: 0; animation: ${animationOutCSS}`
   }
 
   const groupChildren = React.Children.toArray(children).map(child => {
