@@ -80,12 +80,13 @@ const AnimateOnChange = ({
     ${style}
   `
 
+  const baseClassName = className || 'animate-on-change'
+
   return (
     <Span
       onTransitionEnd={showDisplayContent}
       onAnimationEnd={showDisplayContent}
-      className={`${className || 'animate-on-change'} ${className ||
-        'animate-on-change'}-${animation}`}
+      className={`${baseClassName} ${baseClassName}-${animation}`}
     >
       {displayContent}
     </Span>
