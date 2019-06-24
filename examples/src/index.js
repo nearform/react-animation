@@ -110,7 +110,7 @@ const DemoPage = ({ className }) => {
         setRandomWordGroup(randomWordGroup.filter(w => w !== word))
       }
       else {
-        setRandomWordGroup(randomWordGroup.concat([word]))
+        setRandomWordGroup(randomWordGroup.concat([word]).sort())
       }
 
     }, 2000)

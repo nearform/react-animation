@@ -24,6 +24,9 @@ import {
 import { animations } from '../theme'
 import '../theme/keyframes.css'
 
+const cssPrefixes = ['','-webkit-']
+const css = ( name, styles ) => cssPrefixes.reduce( ( s, p ) => s+ `${p}${name}: ${styles}; `, '')
+
 /**
  * Animate a group or list of components.
  * Animations are applied as components are added to or removed from the group.
@@ -55,9 +58,9 @@ function AnimateGroup( props ) {
 
   const childState = {
     entering: node => node.style = 'display: none',
-    entered:  node => node.style = `${transition}; opacity: 1; animation: ${animationInCSS}`,
-    exiting:  node => node.style = `${transition}; opacity: 0; animation: ${animationOutCSS}`,
-    exited:   node => node.style = `${transition}; opacity: 0; animation: ${animationOutCSS}`
+    entered:  node => node.style = `${transition}; opacity: 1; ${css('animation',animationInCSS)}`,
+    exiting:  node => node.style = `${transition}; opacity: 0; ${css('animation',animationOutCSS)}`,
+    exited:   node => node.style = `${transition}; opacity: 0; ${css('animation',animationOutCSS)}`
   }
 
   const groupChildren = React.Children.toArray(children).map(child => {
