@@ -32,11 +32,15 @@ import '../theme/keyframes.css'
 function AnimateGroup( props ) {
 
   const {
+    // Convenience property for setting animationIn and animationOut
+    // at once; e.g. setting animation="slide" is equivalent to
+    // animationIn="slideIn" animationOut="slideOut"
+    animation,
     // Name of animation used when adding a new component.
     // See theme/index.js for animation names.
-    animationIn,
+    animationIn = animation+'In',
     // Name of animation used when removing an existing component.
-    animationOut,
+    animationOut = animation+'Out',
     // The CSS class name to apply to the group container.
     className,
     // Transition out duration.
@@ -46,13 +50,14 @@ function AnimateGroup( props ) {
   } = props
 
   const transition      = `transition: opacity ${durationOut}ms ease-out`
-  const animationInCSS  = animations[animationIn] || animationIn
+  const animationInCSS  = animations[animationIn]  || animationIn
   const animationOutCSS = animations[animationOut] || animationOut
 
   const childState = {
-    hidden: node => node.style = 'display: none',
-    in:     node => node.style = `${transition}; opacity: 1; animation: ${animationInCSS}`,
-    out:    node => node.style = `${transition}; opacity: 0; animation: ${animationOutCSS}`
+    entering: node => node.style = 'display: none',
+    entered:  node => node.style = `${transition}; opacity: 1; animation: ${animationInCSS}`,
+    exiting:  node => node.style = `${transition}; opacity: 0; animation: ${animationOutCSS}`,
+    exited:   node => node.style = `${transition}; opacity: 0; animation: ${animationOutCSS}`
   }
 
   const groupChildren = React.Children.toArray(children).map(child => {
@@ -60,10 +65,10 @@ function AnimateGroup( props ) {
     return (<Transition
       key={key}
       timeout={500}
-      onEntering={childState.hidden}
-      onEntered={childState.in}
-      onExiting={childState.out}
-      onExited={childState.out}
+      onEntering={childState.entering}
+      onEntered={childState.entered}
+      onExiting={childState.exiting}
+      onExited={childState.exited}
     >
       {child}
     </Transition>)
@@ -78,13 +83,13 @@ AnimateGroup.propTypes = {
   children:     PropTypes.any.isRequired,
   className:    PropTypes.string,
   durationOut:  PropTypes.number,
+  animation:    PropTypes.string,
   animationIn:  PropTypes.string,
   animationOut: PropTypes.string
 }
 
 AnimateGroup.defaultProps = {
-  animationIn:  'fadeIn',
-  animationOut: 'fadeOut',
+  animation:    'fade',
   durationOut:  200
 }
 

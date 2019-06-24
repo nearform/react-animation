@@ -16,5 +16,6 @@
 
 export { default as AnimateOnChange } from './AnimateOnChange'
 export { default as HideUntilLoaded } from './HideUntilLoaded'
+export { default as AnimateGroup } from './AnimateGroup'
 export { animations } from './theme'
 export { easings } from './theme'

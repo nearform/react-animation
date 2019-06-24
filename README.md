@@ -74,6 +74,16 @@ import MySpinner from '../MySpinner' // This could be an animated SVG or any Rea
 
 ```
 
+### AnimateGroup
+
+This component makes it easy to animate additions and deletions to a group of components.
+
+    <AnimateGroup animation="slide">{children}</AnimateGroup>
+
+It is important for every child to have a unique key, in order for the component to detect changes to the group as children are added and removed.
+
+Note that this component is different to AnimateOnChange as it _only_ animates addition of new elements and removal of existing ones; changes to existing elements are not animated. However, animation of updates to elements can be simulated by changing the child key when its value changes; this will be equivalent to removing the child's old value and replacing it with a new child with the new value.
+
 ## Animations
 
 This package includes some pre-built animations along with their associated keyframes. As well as supplying the animation names to the above components, you can also apply these animations directly to your components:
