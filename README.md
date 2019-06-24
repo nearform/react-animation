@@ -82,7 +82,9 @@ This component makes it easy to animate additions and deletions to a group of co
 
 It is important for every child to have a unique key, in order for the component to detect changes to the group as children are added and removed.
 
-Note that this component is different to AnimateOnChange as it _only_ animates addition of new elements and removal of existing ones; changes to existing elements are not animated. However, animation of updates to elements can be simulated by changing the child key when its value changes; this will be equivalent to removing the child's old value and replacing it with a new child with the new value.
+Animations and transitions can be specified in the same way as for `AnimateOnChange`, using `animationIn` and `animationOut` properties. Alternatively, `AnimateGroup` supports the convenience property `animation` which allows the base name of the animation to be specified; so for example, setting `animation="bounce"` is equivalent to setting the properties `animationIn="bounceIn" animationOut="bounceOut"`.
+
+Note that this component is different to `AnimateOnChange` as it _only_ animates addition of new elements and removal of existing ones; changes to existing elements are not animated. However, animation of updates to elements can be simulated by changing the child key when its value changes; this will be equivalent to removing the child's old value and replacing it with a new child with the new value.
 
 ## Animations
 
