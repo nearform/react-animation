@@ -204,6 +204,12 @@ const DemoPage = ({ className }) => {
             we can change the fade animation to any others defined in the{' '}
             <code>animations</code> object.
           </p>
+          <p>
+            Alternatively, a single <code>animation</code> property can be supplied with the base
+            name of the animation to use;
+            e.g. setting <code>animation="fade"</code> is equivalent to setting
+            <code>animationIn="fadeIn" animationOut="fadeOut"</code>.
+          </p>
           <LazyLoad height={200}>
             <div className="example">
               <pre>
@@ -463,7 +469,7 @@ ${randomWord}
   </AnimateGroup>
 </ul>`}</code>
               </pre>
-              <div className="example-hul-spinner">
+              <div className="example-animate-group">
                 <div>
                   <ul>
                   <AnimateGroup animation="bounce">
@@ -704,6 +710,19 @@ const StyledDemoPage = styled(DemoPage)`
         width: 50%;
       }
     }
+
+    > div.example-animate-group {
+      height: ${words.length}em;
+      ul {
+        -moz-column-count: 2;
+        -moz-column-gap: 2em;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 2em;
+        column-count: 2;
+        column-gap: 2em;
+      }
+    }
+
 
     &-aoc {
       &-default {

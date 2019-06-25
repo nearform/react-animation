@@ -23,17 +23,20 @@ import '../theme/keyframes.css'
  * Applies an animation to any changes of child content or components.
  *
  * Properties:
- * animate: { Boolean } Whether to perform the animation (optional)
+ * animate:     { Boolean } Whether to perform the animation (optional)
  * children
  * animationIn: {String} A named animation as defined in the theme animations
  * animationOut: {String} A named animation as defined in the theme animations
+ * animation:   {String} Specify the animation base name; use in place of
+ *              animationIn and animationOut.
  * durationOut: {Number} Time in ms for the out animation (default is 200ms)
- * style: {Object} Custom style rules as required
+ * style:       {Object} Custom style rules as required
  */
 
 const AnimateOnChange = ({
-  animationIn,
-  animationOut,
+  animation: animationBaseName,
+  animationIn  = `${animationBaseName}In`,
+  animationOut = `${animationBaseName}Out`,
   children,
   className,
   durationOut,
@@ -95,12 +98,14 @@ AnimateOnChange.propTypes = {
   children: PropTypes.any.isRequired,
   className: PropTypes.string,
   durationOut: PropTypes.number,
+  animation: PropTypes.string,
   animationIn: PropTypes.string,
   animationOut: PropTypes.string,
   style: PropTypes.object
 }
 
 AnimateOnChange.defaultProps = {
+  animation: 'fade',
   durationOut: 200
 }
 

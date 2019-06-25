@@ -21,14 +21,14 @@ import { animations, easings } from '../theme'
 import '../theme/keyframes.css'
 
 /**
- * Anmates in a component once an image has loaded.
+ * Animates in a component once an image has loaded.
  *
  * Properties:
  * children
  * animationIn: {String} A named animation as defined in the theme animations
- * Spinner: {Component} An optional spinner component
+ * Spinner:     {Component} An optional spinner component
  * imageToLoad: {String} A URL of the image being loaded
- * style: {Object} Custom style rules as required
+ * style:       {Object} Custom style rules as required
  */
 
 const HideUntilLoaded = ({
