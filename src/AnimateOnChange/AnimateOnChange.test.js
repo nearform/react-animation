@@ -230,7 +230,7 @@ describe('AnimateOnChange', () => {
     act(() => {
       component.update()
     })
-    component.simulate('transitionEnd');
+    component.simulate('transitionEnd')
 
     expect(component.find('span').get(0).props.className).not.toEqual(
       expect.stringContaining(`${className}-out`)
@@ -245,5 +245,21 @@ describe('AnimateOnChange', () => {
       <AnimateOnChange style={{ background: 'red' }}>123</AnimateOnChange>
     )
     expect(component.find('span').get(0).props.style.background).toEqual('red')
+  })
+
+  it('should correctly apply durationOut', () => {
+    const component = mount(
+      <AnimateOnChange durationOut={5000}>DurationOut Test</AnimateOnChange>
+    )
+    expect(component.find('span').get(0).props.style.animationDuration).toEqual(
+      '5000ms'
+    )
+  })
+
+  it('should should apply default durationOut', () => {
+    const component = mount(<AnimateOnChange>DurationOut Test</AnimateOnChange>)
+    expect(component.find('span').get(0).props.style.animationDuration).toEqual(
+      '200ms'
+    )
   })
 })
