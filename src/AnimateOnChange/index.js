@@ -35,7 +35,7 @@ import '../theme/keyframes.css'
 
 const AnimateOnChange = ({
   animation: animationBaseName,
-  animationIn  = `${animationBaseName}In`,
+  animationIn = `${animationBaseName}In`,
   animationOut = `${animationBaseName}Out`,
   children,
   className,
@@ -46,17 +46,14 @@ const AnimateOnChange = ({
   const [displayContent, setDisplayContent] = useState(children)
   const firstUpdate = useRef(true)
 
-  useEffect(
-    () => {
-      // Don't run the effect the first time through
-      if (firstUpdate.current) {
-        firstUpdate.current = false
-        return
-      }
-      setAnimation('out')
-    },
-    [children]
-  )
+  useEffect(() => {
+    // Don't run the effect the first time through
+    if (firstUpdate.current) {
+      firstUpdate.current = false
+      return
+    }
+    setAnimation('out')
+  }, [children])
 
   const showDisplayContent = () => {
     if (animation === 'out') {
@@ -69,6 +66,7 @@ const AnimateOnChange = ({
     display: 'inline-block',
     transition: !className && `opacity ${durationOut}ms ease-out`,
     opacity: !className && animation === 'out' ? 0 : 1,
+    animationDuration: durationOut + 'ms',
     ...style
   }
 
@@ -105,7 +103,7 @@ AnimateOnChange.propTypes = {
 }
 
 AnimateOnChange.defaultProps = {
-  animation: 'fade',
+  animation: undefined,
   durationOut: 200
 }
 

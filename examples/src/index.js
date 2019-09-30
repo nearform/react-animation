@@ -106,13 +106,11 @@ const DemoPage = ({ className }) => {
       setRandomEmoji(getRandomFrom(emojis))
 
       const word = getRandomFrom(words)
-      if(randomWordGroup.includes(word)) {
+      if (randomWordGroup.includes(word)) {
         setRandomWordGroup(randomWordGroup.filter(w => w !== word))
-      }
-      else {
+      } else {
         setRandomWordGroup(randomWordGroup.concat([word]).sort())
       }
-
     }, 2000)
     return () => {
       clearInterval(wordInterval)
@@ -185,13 +183,13 @@ const DemoPage = ({ className }) => {
               <pre>
                 <code>{`
 <AnimateOnChange
-  durationOut="1000"
+  durationOut="750"
 >
   ${randomWord}
 </AnimateOnChange>`}</code>
               </pre>
               <div className="example-aoc-slow">
-                <AnimateOnChange durationOut={1000}>
+                <AnimateOnChange durationOut={750}>
                   {randomWord}
                 </AnimateOnChange>
               </div>
@@ -205,9 +203,9 @@ const DemoPage = ({ className }) => {
             <code>animations</code> object.
           </p>
           <p>
-            Alternatively, a single <code>animation</code> property can be supplied with the base
-            name of the animation to use;
-            e.g. setting <code>animation="fade"</code> is equivalent to setting
+            Alternatively, a single <code>animation</code> property can be
+            supplied with the base name of the animation to use; e.g. setting{' '}
+            <code>animation="fade"</code> is equivalent to setting
             <code>animationIn="fadeIn" animationOut="fadeOut"</code>.
           </p>
           <LazyLoad height={200}>
@@ -443,8 +441,8 @@ ${randomWord}
             <code>import {`{ AnimateGroup }`} from 'react-animation'</code>
           </p>
           <p>
-            Use this component when you want to animate components being being added, 
-            removed or modified within a group of components.
+            Use this component when you want to animate components being being
+            added, removed or modified within a group of components.
           </p>
 
           <LazyLoad height={200}>
@@ -454,8 +452,8 @@ ${randomWord}
           </LazyLoad>
 
           <p>
-            By default this will fade-in new components as they are added to the group,
-            and fade-out components that are removed from the group.
+            By default this will fade-in new components as they are added to the
+            group, and fade-out components that are removed from the group.
           </p>
 
           <LazyLoad height={200}>
@@ -472,9 +470,11 @@ ${randomWord}
               <div className="example-animate-group">
                 <div>
                   <ul>
-                  <AnimateGroup animation="bounce">
-                    {randomWordGroup.map(word => (<li key={word}>{word}</li>))}
-                  </AnimateGroup>
+                    <AnimateGroup animation="bounce">
+                      {randomWordGroup.map(word => (
+                        <li key={word}>{word}</li>
+                      ))}
+                    </AnimateGroup>
                   </ul>
                 </div>
               </div>
@@ -482,20 +482,19 @@ ${randomWord}
           </LazyLoad>
 
           <p>
-            Components may be added of removed in any order.
-            When using the component ensure that each child has a unique key within
-            the group.
-          </p>
-          
-          <p>
-            The animation to use can be specified in the same way as <code>AnimateOnChange</code>,
-            using <code>animationIn</code> and <code>animationOut</code> properties.
-            Alternatively, a single <code>animation</code> property can be supplied with the base
-            name of the animation to use;
-            so <code>animation="fade"</code> is equivalent to 
-            <code>animationIn="fadeIn" animationOut="fadeOut"</code>.
+            Components may be added of removed in any order. When using the
+            component ensure that each child has a unique key within the group.
           </p>
 
+          <p>
+            The animation to use can be specified in the same way as{' '}
+            <code>AnimateOnChange</code>, using <code>animationIn</code> and{' '}
+            <code>animationOut</code> properties. Alternatively, a single{' '}
+            <code>animation</code> property can be supplied with the base name
+            of the animation to use; so <code>animation="fade"</code> is
+            equivalent to
+            <code>animationIn="fadeIn" animationOut="fadeOut"</code>.
+          </p>
         </div>
 
         <div className="page-content">
@@ -722,7 +721,6 @@ const StyledDemoPage = styled(DemoPage)`
         column-gap: 2em;
       }
     }
-
 
     &-aoc {
       &-default {
