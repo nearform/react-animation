@@ -103,7 +103,6 @@ AnimateOnChange.propTypes = {
 }
 
 AnimateOnChange.defaultProps = {
-  animation: undefined,
   durationOut: 200
 }
 
